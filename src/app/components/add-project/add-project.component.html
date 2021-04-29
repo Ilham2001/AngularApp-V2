@@ -1,0 +1,50 @@
+<div>
+    <div>
+        <h3>Nouveau projet</h3>
+    </div>
+    <div class="add-form">
+       
+        <form [formGroup]="addProjectForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="">Nom du projet :</label>
+                <input type="text" formControlName="projectName">
+            </div>
+            
+            <div>
+                <label for="">Description du projet : </label>
+                <textarea formControlName="projectDescription"></textarea>
+            </div>
+            
+            <div>
+                <label for="">Site web : </label>
+                <input type="text" formControlName="projectWebsite">
+                
+            </div>
+           
+            <div class="project-isPublic">
+                <label for="">Public :</label>
+                <input type="checkbox" formControlName="projectIsPublic">
+            </div>
+            
+            <div>
+                <label for="">Sous projet de :</label>
+                <select formControlName="projectSubproject"></select>
+            </div>
+            
+            <div>
+                <label for="">Membres :</label>
+                <input type="text" formControlName="projectMembers">
+            </div>
+            
+            <div>
+                <label for="">Landing page :</label>
+                <input type="text" formControlName="projectLandingPage">
+            </div>
+
+            <div class="submit-btn">
+                <button type="submit">Créer</button>
+            </div>
+           
+        </form>
+    </div>
+</div>

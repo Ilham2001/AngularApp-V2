@@ -1,0 +1,53 @@
+.filter-btn {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    float: right;
+    
+}
+
+.filter-btn .filter {
+    margin: 5px;
+}
+
+.filter-btn .btn a {
+    
+    border-radius: 3px;
+    font-size: 13px;
+    border-color: transparent;
+    background-color: #f0f2f5 ;
+    color: #212136;
+    padding: 6px 8px 6px 8px;
+    margin: 5px;
+}
+
+.filter-btn .btn a i {
+    padding-right: 5px;
+}
+
+.filter-btn .btn a:hover {
+    background-color:  #E8E8E8;
+}
+
+.articles-list {
+    float: left;
+    width: 75%;
+}
+
+.articles-list .article a {
+    position: relative;
+    color:  #0039a6;
+    font-size: 16px;
+}
+
+.articles-list .article a:hover {
+    color: #0065ff;
+    text-decoration: underline;
+}
+
+.categories-list {
+    float: right;
+    width: 20%;
+}

@@ -1,0 +1,65 @@
+<div>
+    <div>
+        <h3>Nouvel article</h3>
+    </div>
+    <div class="add-form">
+        <form [formGroup]="addArticleForm" (ngSubmit)="onSubmit()">
+            
+            <div>
+                <label for="">Catégorie :</label>
+                <select type="text" formControlName="articleCategory"></select>
+            </div>
+
+            <div>
+                <label for="">Titre :</label>
+                <input type="text" formControlName="articleTitle">
+            </div>
+
+            <div>
+                <label for="">Résumé :</label>
+                <textarea type="text" formControlName="articleSummary"></textarea>
+            </div>
+
+            <div>
+                <label for="">Environnement :</label>
+                <input type="text" formControlName="articleEnvironment">
+            </div>
+
+            <div>
+                <label for="">Description :</label>
+                <input type="text" formControlName="articleDescription">
+            </div>
+
+            <div>
+                <label for="">Message d'erreur :</label>
+                <input type="text" formControlName="articleErrorMessage">
+            </div>
+
+            <div>
+                <label for="">Numéro de ticket :</label>
+                <input type="text" formControlName="articleTicketNumber">
+            </div>
+
+            <div>
+                <label for="">Cause :</label>
+                <input type="text" formControlName="articleCause">
+            </div>
+
+            <div>
+                <label for="">Résolution :</label>
+                <input type="text" formControlName="articleResolution">
+            </div>
+
+            <div>
+                <label for="">Mot clés :</label>
+                <input type="text" formControlName="articleKeywords">
+            </div>
+
+            <div class="submit-btn">
+                <button type="submit">Créer</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

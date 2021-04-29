@@ -1,0 +1,79 @@
+.filter-btn {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter-btn .closed-filter input {
+    padding: 10px;
+    margin: 10px;
+}
+
+.closed-filter a {
+    border-radius: 3px;
+    font-size: 14px;
+    border-color: transparent;
+    background-color: #0065ff;
+    color: #fff;
+    padding: 6px 10px 6px 10px;
+    margin: 10px;
+}
+
+.closed-filter a:hover {
+    background-color:  #0065e0;
+}
+.btn a {
+    border-radius: 3px;
+    font-size: 14px;
+    border-color: transparent;
+    background-color: #f0f2f5 ;
+    color: #212136;
+    padding: 8px 10px 8px 10px;
+    float: right;
+    
+}
+.btn a i {
+    padding-right: 5px;
+}
+
+.btn a:hover {
+    background-color:  #E8E8E8;
+}
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr); 
+    grid-gap: 20px;
+}
+
+.cardBox .card {
+    position: relative;
+    background: #fafbfc;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    border: 1px solid #dadce7;
+}
+
+.cardBox .card .project-name {
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cardBox .card .project-name a {
+    color: #0065ff;
+}
+
+.cardBox .card .project-name a:hover {
+    color: #0065e0;
+    text-decoration: underline;
+}
+
+
+.cardBox .card .project-description {
+    color: #999;
+}

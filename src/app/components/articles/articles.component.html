@@ -1,0 +1,59 @@
+<div>
+    <!-- Add button -->
+    <div class="filter-btn">
+        <div class="filter">
+            Catégorie :<select type="text" name="" id=""></select>
+        </div>
+        <div class="btn">
+            <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
+            <a href=""><i nz-icon nzType="plus" nzTheme="outline"></i>Créer une catégorie</a>
+        </div>
+        
+    </div>
+    <div>
+        <div class="articles-list">
+            <nz-list nzItemLayout="horizontal" >
+                <nz-list-item>
+                    <nz-list-item-meta class="article">
+                        <nz-list-item-meta-title>
+                            <nz-avatar [nzShape]="'square'" [nzSize]="30" [nzSrc]=""></nz-avatar>
+                            <a [routerLink]="'/show_article'">
+                                The conversion of a varchar data type to a 
+                                datetime data type resulted in an out-of-range value.
+                            </a>
+                        </nz-list-item-meta-title>
+        
+                        <nz-list-item-meta-description>
+                            tes test Description ilham lazar ......
+                        </nz-list-item-meta-description>
+                  </nz-list-item-meta>
+                </nz-list-item>
+        
+                <nz-list-item>
+                    <nz-list-item-meta>
+                        <nz-list-item-meta-title class="article">
+                            <a>Article 2</a>
+                       
+                        </nz-list-item-meta-title>
+                        
+                        <nz-list-item-meta-description>
+                            tes test Description ilham lazar ...... 
+                        </nz-list-item-meta-description>
+                    </nz-list-item-meta>
+                </nz-list-item>
+                
+            </nz-list>
+        </div>
+        <div class="categories-list">
+            <nz-list nzBordered nzSize="small">
+                <nz-list-header>
+                    Parcourir par catégorie
+                </nz-list-header>
+                <nz-list-item>
+                    <a [routerLink]="''">C#</a>
+                </nz-list-item>
+                <nz-list-item>Laravel</nz-list-item>
+              </nz-list>
+        </div>
+    </div>
+</div>
