@@ -12,49 +12,16 @@
     <!-- Projects list -->
     <div class="cardBox">
         <!-- Card 1-->
-        <div class="card">
+        <div class="card" *ngFor="let project of projects">
             <div>
                 <div class="project-name">
-                    <a [routerLink]="'/show_project'">Nom du projet</a>
+                    <a (click)="onSelect(project)">{{ project.name }}</a>
                 </div>
                 <div class="project-description">
-                    Description du projet...
+                    {{ project.description }}
                 </div>
             </div>
         </div>
-        <!-- Card 2 -->
-        <div class="card">
-            <div>
-                <div class="project-name">
-                    Nom du projet2
-                </div>
-                <div class="project-description">
-                    Description du projet2...
-                </div>
-            </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="card">
-            <div>
-                <div class="project-name">
-                    Nom du projet3
-                </div>
-                <div class="project-description">
-                    Description du projet3...
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div>
-                <div class="project-name">
-                    Nom du projet3
-                </div>
-                <div class="project-description">
-                    Description du projet3...
-                </div>
-            </div>
-        </div>
-      
     </div>
 
 </div>    

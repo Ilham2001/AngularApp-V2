@@ -4,41 +4,40 @@
     </div>
     <div class="add-form">
        
-        <form [formGroup]="addProjectForm" (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()">
             <div>
                 <label for="">Nom du projet :</label>
-                <input type="text" formControlName="projectName">
+                <input type="text" name="name" [(ngModel)]="project.name">
             </div>
             
             <div>
                 <label for="">Description du projet : </label>
-                <textarea formControlName="projectDescription"></textarea>
+                <textarea name="description" [(ngModel)]="project.description"></textarea>
             </div>
             
             <div>
                 <label for="">Site web : </label>
-                <input type="text" formControlName="projectWebsite">
+                <input type="text" name="website" [(ngModel)]="project.website">
                 
             </div>
            
             <div class="project-isPublic">
                 <label for="">Public :</label>
-                <input type="checkbox" formControlName="projectIsPublic">
+                <input type="checkbox" name="isPublic" [(ngModel)]="project.isPublic">
             </div>
             
             <div>
                 <label for="">Sous projet de :</label>
-                <select formControlName="projectSubproject"></select>
-            </div>
-            
-            <div>
-                <label for="">Membres :</label>
-                <input type="text" formControlName="projectMembers">
+                <select  name="project" [(ngModel)]="selectedProject" (change)="selected()">
+                    <option *ngFor="let project of projects" [ngValue]="project.id">
+                        {{ project.name }}
+                    </option>
+                </select>
             </div>
             
             <div>
                 <label for="">Landing page :</label>
-                <input type="text" formControlName="projectLandingPage">
+                <input type="text" name="landing_page" [(ngModel)]="project.landing_page">
             </div>
 
             <div class="submit-btn">
@@ -46,5 +45,6 @@
             </div>
            
         </form>
+
     </div>
 </div>

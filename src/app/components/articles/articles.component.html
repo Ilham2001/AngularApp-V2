@@ -2,7 +2,12 @@
     <!-- Add button -->
     <div class="filter-btn">
         <div class="filter">
-            Catégorie :<select type="text" name="" id=""></select>
+            Aller à la catégorie :
+            <select type="text" name="" id="">
+                <option *ngFor="let category of categories" value="{{ category.id }}">
+                    {{ category.title }}
+                </option>
+            </select>
         </div>
         <div class="btn">
             <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
@@ -49,10 +54,9 @@
                 <nz-list-header>
                     Parcourir par catégorie
                 </nz-list-header>
-                <nz-list-item>
-                    <a [routerLink]="''">C#</a>
+                <nz-list-item *ngFor="let category of categories">
+                    <a [routerLink]="''">{{ category.title }}</a>
                 </nz-list-item>
-                <nz-list-item>Laravel</nz-list-item>
               </nz-list>
         </div>
     </div>

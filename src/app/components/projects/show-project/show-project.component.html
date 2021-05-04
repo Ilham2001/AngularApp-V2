@@ -2,7 +2,8 @@
     <div class="menu">
         <nz-tabset class="tabs">
             <nz-tab nzTitle="Aperçu">
-              <app-preview></app-preview>
+              Id = {{ project_id }}
+              <app-preview [project] = "project_id"></app-preview>
             </nz-tab>
             <nz-tab nzTitle="Base de connaissances">
                 <app-articles></app-articles>
@@ -10,6 +11,10 @@
 
             <nz-tab nzTitle="Wiki">
               <app-wiki></app-wiki>
+            </nz-tab>
+
+            <nz-tab nzTitle="Configuration">
+              <app-configuration></app-configuration>
             </nz-tab>
 
         </nz-tabset>
