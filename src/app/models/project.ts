@@ -1,6 +1,6 @@
 export class Project {
     id:number;
-    name :any;
+    name:any;
     description:any;
     website:any;
     isPublic:boolean;
@@ -8,4 +8,6 @@ export class Project {
     mambers:any;
     landing_page:any;
     isClosed:boolean;
+    categories:any;
+    wikis: any;
 }

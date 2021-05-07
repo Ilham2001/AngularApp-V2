@@ -3,58 +3,80 @@
         <h3>Nouvel article</h3>
     </div>
     <div class="add-form">
-        <form [formGroup]="addArticleForm" (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()">
+            <div class="first">
+                <div class="category">
+                    <label for="">Catégorie :</label>
+                    <select  name="category" [(ngModel)]="selectedCategory">
+                        <option *ngFor="let category of categories" [ngValue]="category.id">
+                            {{ category.title }}
+                        </option>
+                    </select>
+                </div>
+                
+                <div class="title">
+                    <label for="">Titre :</label>
+                    <input type="text" name="title" [(ngModel)]="article.title">
+                </div>
+
+            </div>
+             
+            <div class="second">
+                <div class="summary">
+                    <label for="">Résumé :</label>
+                    <textarea type="text" name="summary" [(ngModel)]="article.summary"></textarea>
+                </div>
+    
+                <div class="description">
+                    <label for="">Description :</label>
+                    <textarea type="text" name="desc" [(ngModel)]="article.description"></textarea>
+                </div>
+            </div>
+
+            <div class="third">
+                <div class="env">
+                    <label for="">Environnement :</label>
+                    <input type="text" name="env" [(ngModel)]="article.environment">
+                </div>
+    
+                <div class="errorMsg">
+                    <label for="">Message d'erreur :</label>
+                    <input type="text" name="errorMsg" [(ngModel)]="article.error_message">
+                </div>
+                <div class="num">
+                    <label for="">Numéro de ticket :</label>
+                    <input type="text" name="num" [(ngModel)]="article.ticket_number">
+                </div>
+    
+                <div class="cause">
+                    <label for="">Cause :</label>
+                    <input type="text" name="cause" [(ngModel)]="article.cause">
+                </div>
+            </div>
+            <br>
+
+            <div class="fourth">
+                <div class="resolution">
+                    <label for="">Résolution :</label>
+                    <textarea type="text" name="resolution" [(ngModel)]="article.resolution"></textarea>
+                </div>
+                <div class="nothing">
+
+                </div>
+            </div>
+
+            <div class="fifth">
+                <div class="keywords">
+                    <label for="">Mot clés :</label>
+                    <input type="text" name="keywords" [(ngModel)]="article.keywords">
+                </div>
+                <div class="file">
+                    <label for="">Pièce jointe</label>
+                    <input type="text" name="" id="">
+                </div>
+
+            </div>
             
-            <div>
-                <label for="">Catégorie :</label>
-                <select type="text" formControlName="articleCategory"></select>
-            </div>
-
-            <div>
-                <label for="">Titre :</label>
-                <input type="text" formControlName="articleTitle">
-            </div>
-
-            <div>
-                <label for="">Résumé :</label>
-                <textarea type="text" formControlName="articleSummary"></textarea>
-            </div>
-
-            <div>
-                <label for="">Environnement :</label>
-                <input type="text" formControlName="articleEnvironment">
-            </div>
-
-            <div>
-                <label for="">Description :</label>
-                <input type="text" formControlName="articleDescription">
-            </div>
-
-            <div>
-                <label for="">Message d'erreur :</label>
-                <input type="text" formControlName="articleErrorMessage">
-            </div>
-
-            <div>
-                <label for="">Numéro de ticket :</label>
-                <input type="text" formControlName="articleTicketNumber">
-            </div>
-
-            <div>
-                <label for="">Cause :</label>
-                <input type="text" formControlName="articleCause">
-            </div>
-
-            <div>
-                <label for="">Résolution :</label>
-                <input type="text" formControlName="articleResolution">
-            </div>
-
-            <div>
-                <label for="">Mot clés :</label>
-                <input type="text" formControlName="articleKeywords">
-            </div>
-
             <div class="submit-btn">
                 <button type="submit">Créer</button>
             </div>

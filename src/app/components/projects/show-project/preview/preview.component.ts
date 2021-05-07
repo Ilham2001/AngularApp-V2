@@ -8,7 +8,7 @@ import { Project } from 'src/app/models/project';
 })
 export class PreviewComponent implements OnInit {
 
-  @Input() project:number;
+  @Input() project: Project;
 
   constructor() { }
 

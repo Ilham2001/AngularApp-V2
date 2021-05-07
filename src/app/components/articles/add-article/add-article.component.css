@@ -2,26 +2,94 @@ h3 {
     font-weight: bold;
     font-size: 18px;
 }
-.add-form {
+form {
     width: 100%;
     height: 100%;
     align-items: center;
-    display: grid;
-    grid-template-columns: (3,1fr);
+    
 }
-  
+
+form .first, form .second, form .third, form .fourth, form .fifth {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form .first .category, 
+form .second .summary,
+form .third .env,
+form .third .num,
+form .fourth .nothing,
+form .fifth .keywords {
+    float: left;
+}
+
+form .first .category label, 
+form .first .title label, 
+form .second .summary label, 
+form .second .description label,
+form .third label,
+form .fifth .keywords label,
+form .fifth .file label {
+    width: 150px;
+}
+
+form .first .category select, 
+form .first .title input,
+form .third  input,
+form .fifth .keywords input,
+form .fifth .file input  {
+    width: 300px;
+}
+
+
+form .first .title, 
+form .second .description,
+form .third .errorMsg,
+form .third .cause,
+form .fourth .resolution,
+form .fifth .file {
+    float: right;
+}
+
+form .second .summary textarea, form .second .description textarea {
+    width: 300px;
+    height: 100px;
+}
+
+form .fourth {
+    align-items: center;
+    justify-content: space-between;
+}
+form .fourth .nothing {
+    width: 0px;
+}
+
+form .fourth .resolution {
+    width: 100%;
+}
+
+form .fourth .resolution label {
+    float: left;
+    text-align: right;
+    width: 150px;
+}
+
+form .fourth .resolution textarea {
+    height: 180px;
+    
+}
+
 .add-form label  {
     display: inline-block;
-    width: 240px;
     text-align: right;
     padding-bottom: 15px;
-    
-    margin: 10px;
+    margin: 5px;
 }
   
 .add-form input, .add-form select {
     display: inline-block;
-    width: 800px;
+    width: 500px;
     margin: 10px;
     border: 1px solid #d1d3e0;
     border-radius: 2px;
@@ -50,6 +118,6 @@ h3 {
     box-shadow: 0 0 5px rgba(0,0,128,0.3);
   }
 
-.submit-btn button {
+form .submit-btn button {
     float: right;
 }

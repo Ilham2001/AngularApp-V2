@@ -1,52 +1,45 @@
 <div>
-    <!-- Add button -->
-    <div class="filter-btn">
-        <div class="filter">
-            Aller à la catégorie :
-            <select type="text" name="" id="">
-                <option *ngFor="let category of categories" value="{{ category.id }}">
-                    {{ category.title }}
-                </option>
-            </select>
+    <div class="summary-filter">
+        <div class="summary">
+            Sommaire
         </div>
-        <div class="btn">
-            <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
-            <a href=""><i nz-icon nzType="plus" nzTheme="outline"></i>Créer une catégorie</a>
+        <div class="filter-btn">
+            
+            <div class="filter">
+                Aller à la catégorie :
+                <select type="text" name="" id="">
+                    <option value=""></option>
+                    <option *ngFor="let category of categories" value="{{ category.id }}">
+                        {{ category.title }}
+                    </option>
+                </select>
+            </div>
+            <div class="btn">
+                <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
+                <a [routerLink]="'/add_category'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer une catégorie</a>
+            </div>
         </div>
-        
     </div>
     <div>
         <div class="articles-list">
-            <nz-list nzItemLayout="horizontal" >
-                <nz-list-item>
-                    <nz-list-item-meta class="article">
-                        <nz-list-item-meta-title>
-                            <nz-avatar [nzShape]="'square'" [nzSize]="30" [nzSrc]=""></nz-avatar>
-                            <a [routerLink]="'/show_article'">
-                                The conversion of a varchar data type to a 
-                                datetime data type resulted in an out-of-range value.
-                            </a>
-                        </nz-list-item-meta-title>
-        
-                        <nz-list-item-meta-description>
-                            tes test Description ilham lazar ......
-                        </nz-list-item-meta-description>
-                  </nz-list-item-meta>
-                </nz-list-item>
-        
-                <nz-list-item>
-                    <nz-list-item-meta>
-                        <nz-list-item-meta-title class="article">
-                            <a>Article 2</a>
-                       
-                        </nz-list-item-meta-title>
-                        
-                        <nz-list-item-meta-description>
-                            tes test Description ilham lazar ...... 
-                        </nz-list-item-meta-description>
+            <nz-list nzItemLayout="horizontal" *ngFor="let category of project?.categories">
+                <div *ngFor="let article of category.articles">
+                    <nz-list-item>
+                        <nz-list-item-meta class="article">
+                            <nz-list-item-meta-title>
+                                <nz-avatar [nzShape]="'square'" [nzSize]="30" [nzSrc]=""></nz-avatar>
+                                <a [routerLink]="'/show_article'">
+                                    {{ article.title }}
+                                </a>
+                            </nz-list-item-meta-title>
+            
+                            <nz-list-item-meta-description>
+                                {{ article.description }}
+                            </nz-list-item-meta-description>
                     </nz-list-item-meta>
-                </nz-list-item>
-                
+                    </nz-list-item>
+        
+                </div>
             </nz-list>
         </div>
         <div class="categories-list">
@@ -55,7 +48,7 @@
                     Parcourir par catégorie
                 </nz-list-header>
                 <nz-list-item *ngFor="let category of categories">
-                    <a [routerLink]="''">{{ category.title }}</a>
+                    <a [routerLink]="'/show_category/'+category.id">{{ category.title }}</a>
                 </nz-list-item>
               </nz-list>
         </div>

@@ -1,15 +1,29 @@
+.summary-filter {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+}
 .filter-btn {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 18px;
-    float: right;
-    
+}
+
+.filter-btn .summary {
+    float: left;
 }
 
 .filter-btn .filter {
     margin: 5px;
+    float: right;
+}
+
+.filter-btn .filter select {
+    width: 200px;
 }
 
 .filter-btn .btn a {

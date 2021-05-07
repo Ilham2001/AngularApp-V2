@@ -31,6 +31,9 @@ import { ConfigurationComponent } from './components/configuration/configuration
 import { InformationsComponent } from './components/configuration/informations/informations.component';
 import { MembersComponent } from './components/configuration/members/members.component';
 import { WikiConfigComponent } from './components/configuration/wiki-config/wiki-config.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
+import { ShowCategoryComponent } from './components/categories/show-category/show-category.component';
 
 
 registerLocaleData(fr);
@@ -50,7 +53,10 @@ registerLocaleData(fr);
     ConfigurationComponent,
     InformationsComponent,
     MembersComponent,
-    WikiConfigComponent
+    WikiConfigComponent,
+    CategoriesComponent,
+    AddCategoryComponent,
+    ShowCategoryComponent
   ],
   imports: [
     BrowserModule,

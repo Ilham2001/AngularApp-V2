@@ -1,29 +1,17 @@
 <div>
-    <nz-list nzItemLayout="horizontal" >
+    <nz-list nzItemLayout="horizontal" *ngFor="let wiki of project?.wikis" >
         <nz-list-item>
             <nz-list-item-meta>
                 <nz-list-item-meta-title>
                     <a [routerLink]="">
-                        Wrokflow
+                        {{ wiki?.title }}
                     </a>
                 </nz-list-item-meta-title>
 
                 <nz-list-item-meta-description>
-                    Workflows are how Redmine tracks issues from creation through completion. The default Workflow contains the following states:
+                    {{ wiki?.content }}
                 </nz-list-item-meta-description>
           </nz-list-item-meta>
         </nz-list-item>
-
-        <nz-list-item>
-            <nz-list-item-meta>
-                <nz-list-item-meta-title>
-                    <a>Wiki 2</a>
-                </nz-list-item-meta-title>
-                <nz-list-item-meta-description>
-                    manuel ... 
-                </nz-list-item-meta-description>
-            </nz-list-item-meta>
-        </nz-list-item>
-        
     </nz-list>
 </div>

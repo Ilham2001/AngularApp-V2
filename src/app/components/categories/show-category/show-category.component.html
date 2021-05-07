@@ -1,0 +1,19 @@
+<div>
+    <h3>{{ category?.title }}</h3>
+    <div *ngIf="category?.children.length===0">
+        <div *ngFor="let article of category?.articles">
+            {{ article.title }}
+        </div>
+    </div>
+    <div *ngIf="category?.children.length!==0">
+        <div *ngFor="let child of category?.children">
+            Catégorie : {{ child.title }}<br>
+            Articles :
+            <div *ngFor="let article of child?.articles">
+                {{ article?.title }}
+            </div>
+        
+        </div>
+    </div>
+    
+</div>

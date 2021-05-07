@@ -29,17 +29,17 @@ export class AddProjectComponent implements OnInit {
 
   onSubmit() {
     this.project.parent_id = this.selectedProject;
-    console.log(this.project);
+    //console.log(this.project);
     
     this.projectService.storeData(this.project).subscribe(
       response => {
-        console.log(response);
+        console.log(response); //projet crée
       }
     )
   }
 
   selected() {
-    console.log(this.selectedProject);
+    //console.log(this.selectedProject);
   }
 
 }

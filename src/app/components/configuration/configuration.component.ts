@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Project } from 'src/app/models/project';
 
 @Component({
   selector: 'app-configuration',
@@ -13,8 +14,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigurationComponent implements OnInit {
 
+  @Input() project: Project;
   
-
   constructor() { }
 
   ngOnInit(): void {

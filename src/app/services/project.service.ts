@@ -15,4 +15,8 @@ export class ProjectService {
   storeData(data) {
     return this.httpClient.post('http://127.0.0.1:8000/api/project',data);
   }
+
+  getProject(id) {
+    return this.httpClient.get('http://127.0.0.1:8000/api/project/'+id);
+  }
 }

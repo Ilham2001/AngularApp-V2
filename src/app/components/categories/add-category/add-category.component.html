@@ -1,0 +1,29 @@
+<div>
+    <div>
+        <h3>Nouvelle catégorie</h3>
+    </div>
+    <div class="add-form">
+        <form (ngSubmit)="onSubmit()">
+            <div>
+                <label for="">Titre :</label>
+                <input type="text" name="title" [(ngModel)]="category.title">
+            </div>
+            <div>
+                <label for="">Sous catégorie de :</label>
+                <select  name="category" [(ngModel)]="selectedCategory" (change)="selected()">
+                    <option *ngFor="let category of categories" [ngValue]="category.id">
+                        {{ category.title }}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label for="">Description : </label>
+                <textarea name="description" [(ngModel)]="category.description"></textarea>
+            </div>
+
+            <div class="submit-btn">
+                <button type="submit">Créer</button>
+            </div>
+        </form>
+    </div>
+</div>

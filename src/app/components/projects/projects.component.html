@@ -15,7 +15,7 @@
         <div class="card" *ngFor="let project of projects">
             <div>
                 <div class="project-name">
-                    <a (click)="onSelect(project)">{{ project.name }}</a>
+                    <a [routerLink]="'/show_project/'+project.id">{{ project.name }}</a>
                 </div>
                 <div class="project-description">
                     {{ project.description }}
