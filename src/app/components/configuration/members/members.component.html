@@ -1,1 +1,55 @@
-<p>members works!</p>
+<div>
+    <div class="title-btn">
+        <div class="title">
+            <h3>Membres</h3>
+        </div>
+        <div class="btn">
+            <a (click)="showModal()"><i nz-icon nzType="plus" nzTheme="outline"></i>Nouveau membre</a>
+        </div>
+    </div>
+
+    <div class="modal">
+        <nz-modal [(nzVisible)]="isVisible" nzTitle="Ajouter un nouveau membre" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+
+            <form nz-form class="ant-advanced-search-form" [formGroup]="addMember">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="10">Choisissez un utilisateur</nz-form-label>
+                    <nz-form-control>
+                        <nz-select formControlName="member">
+                            <nz-option *ngFor="let user of users" [nzValue]="user.id" [nzLabel]="user.first_name + ' ' + user.last_name"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+
+        </ng-container>
+        </nz-modal>
+    </div>
+
+    <table >
+        <thead>
+            <tr>
+                <th>Membre</th>
+                <th>Rôle</th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of project?.members">
+
+                    <td class="user">
+                        {{ member.first_name }}
+                    </td>
+                    <td class="role">
+                        {{ member.role }}
+                    </td>
+                    <td class="action">
+                        <a (click)="deleteUser($event)" id="{{ member.id }}"><i nz-icon nzType="delete" nzTheme="fill"></i>Supprimer</a>
+                    </td>             
+
+            </tr>
+        </tbody>
+    </table>
+</div>

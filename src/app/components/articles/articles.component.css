@@ -1,21 +1,25 @@
 .summary-filter {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    
     padding-bottom: 18px;
+}
+.summary-filter .summary {
+    float: left;
+    margin-bottom: 20px;
+    padding: 15px 15px;
+    border: 1px solid #dadce7;
+    border-radius: 3px;
+    background-color: #fafbfc;
+    color: #212136;
+    word-wrap: break-word;
 }
 .filter-btn {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    float: right;
     padding-bottom: 18px;
 }
 
-.filter-btn .summary {
-    float: left;
-}
 
 .filter-btn .filter {
     margin: 5px;
@@ -64,4 +68,14 @@
 .categories-list {
     float: right;
     width: 20%;
+}
+
+.description p {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.list {
+    margin: 10px;
+    padding-top: 10px;
 }

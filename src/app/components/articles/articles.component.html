@@ -1,7 +1,12 @@
 <div>
     <div class="summary-filter">
         <div class="summary">
-            Sommaire
+            <h3>Sommaire de la base de connaissance</h3>
+            <ul>
+                <li>Nombre total des catégories : {{ categories?.length }}</li>
+                <li>Nombre total des articles : {{ articles?.length }}</li>
+                <li>Articles écrits par moi :</li>
+            </ul>
         </div>
         <div class="filter-btn">
             
@@ -9,7 +14,7 @@
                 Aller à la catégorie :
                 <select type="text" name="" id="">
                     <option value=""></option>
-                    <option *ngFor="let category of categories" value="{{ category.id }}">
+                    <option *ngFor="let category of categories" (change)="onSelect(category)" value="{{ category.id }}">
                         {{ category.title }}
                     </option>
                 </select>
@@ -20,21 +25,26 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="list">
         <div class="articles-list">
             <nz-list nzItemLayout="horizontal" *ngFor="let category of project?.categories">
                 <div *ngFor="let article of category.articles">
                     <nz-list-item>
                         <nz-list-item-meta class="article">
                             <nz-list-item-meta-title>
-                                <nz-avatar [nzShape]="'square'" [nzSize]="30" [nzSrc]=""></nz-avatar>
-                                <a [routerLink]="'/show_article'">
+                                <!--<nz-avatar [nzShape]="'square'" [nzSize]="30" [nzSrc]=""></nz-avatar>-->
+                                <a [routerLink]="'/show_article/'+article?.id">
                                     {{ article.title }}
                                 </a>
                             </nz-list-item-meta-title>
             
-                            <nz-list-item-meta-description>
-                                {{ article.description }}
+                            <nz-list-item-meta-description class="description">
+                                <p>
+                                    {{ article.description | slice:0:60 }}...
+                                </p>
+                                <p>
+                                    Mis à jour le : {{ article.updated_at| date:'dd/MM/yyyy HH:MM:SS' }}
+                                </p>
                             </nz-list-item-meta-description>
                     </nz-list-item-meta>
                     </nz-list-item>

@@ -9,7 +9,12 @@ import { Project } from 'src/app/models/project';
 export class WikiComponent implements OnInit {
 
   @Input() project: Project;
-  
+  page = 1;
+  count = 0;
+  tableSize = 7;
+  tableSizes = [3, 6, 9, 12];
+  height:number;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -3,84 +3,133 @@
         <h3>Nouvel article</h3>
     </div>
     <div class="add-form">
-        <form (ngSubmit)="onSubmit()">
-            <div class="first">
-                <div class="category">
-                    <label for="">Catégorie :</label>
-                    <select  name="category" [(ngModel)]="selectedCategory">
-                        <option *ngFor="let category of categories" [ngValue]="category.id">
-                            {{ category.title }}
-                        </option>
-                    </select>
-                </div>
-                
-                <div class="title">
-                    <label for="">Titre :</label>
-                    <input type="text" name="title" [(ngModel)]="article.title">
-                </div>
-
+ 
+        <form nz-form class="ant-advanced-search-form" [formGroup]="addArticle" (ngSubmit)="onSubmit()">
+            <!-- Row 1 -->
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzSpan]="12">
+                <nz-form-item>
+                  <nz-form-label>Catégorie</nz-form-label>
+                  <nz-form-control>
+                    <nz-select formControlName="category">
+                        <nz-option *ngFor="let category of categories" [nzValue]="category.id" [nzLabel]="category.title"></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="12">
+                <nz-form-item>
+                    <nz-form-label>Titre</nz-form-label>
+                    <nz-form-control>
+                      <input nz-input formControlName="title"/>
+                    </nz-form-control>
+                  </nz-form-item>
+              </div>
             </div>
-             
-            <div class="second">
-                <div class="summary">
-                    <label for="">Résumé :</label>
-                    <textarea type="text" name="summary" [(ngModel)]="article.summary"></textarea>
+            <!-- Row 2 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Résumé</nz-form-label>
+                        <nz-form-control>
+                          <nz-textarea-count [nzMaxCharacterCount]="100">
+                            <textarea rows="2" nz-input name="summary" formControlName=""></textarea>
+                          </nz-textarea-count>
+                        </nz-form-control>
+                    </nz-form-item>
                 </div>
-    
-                <div class="description">
-                    <label for="">Description :</label>
-                    <textarea type="text" name="desc" [(ngModel)]="article.description"></textarea>
-                </div>
-            </div>
-
-            <div class="third">
-                <div class="env">
-                    <label for="">Environnement :</label>
-                    <input type="text" name="env" [(ngModel)]="article.environment">
-                </div>
-    
-                <div class="errorMsg">
-                    <label for="">Message d'erreur :</label>
-                    <input type="text" name="errorMsg" [(ngModel)]="article.error_message">
-                </div>
-                <div class="num">
-                    <label for="">Numéro de ticket :</label>
-                    <input type="text" name="num" [(ngModel)]="article.ticket_number">
-                </div>
-    
-                <div class="cause">
-                    <label for="">Cause :</label>
-                    <input type="text" name="cause" [(ngModel)]="article.cause">
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Description</nz-form-label>
+                        <nz-form-control>
+                          <nz-textarea-count [nzMaxCharacterCount]="100">
+                            <textarea rows="2" nz-input formControlName=""></textarea>
+                          </nz-textarea-count>
+                        </nz-form-control>
+                    </nz-form-item>
                 </div>
             </div>
-            <br>
-
-            <div class="fourth">
-                <div class="resolution">
-                    <label for="">Résolution :</label>
-                    <textarea type="text" name="resolution" [(ngModel)]="article.resolution"></textarea>
+            <!-- Row 3 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                    <nz-form-label>Environnement</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName=""/>
+                    </nz-form-control>
+                  </nz-form-item>
                 </div>
-                <div class="nothing">
-
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                      <nz-form-label>Message d'erreur</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input formControlName=""/>
+                      </nz-form-control>
+                    </nz-form-item>
                 </div>
             </div>
-
-            <div class="fifth">
-                <div class="keywords">
-                    <label for="">Mot clés :</label>
-                    <input type="text" name="keywords" [(ngModel)]="article.keywords">
+              <!-- Row 4 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                    <nz-form-label>Numéro de ticket</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName=""/>
+                    </nz-form-control>
+                  </nz-form-item>
                 </div>
-                <div class="file">
-                    <label for="">Pièce jointe</label>
-                    <input type="text" name="" id="">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                      <nz-form-label>Cause</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input formControlName=""/>
+                      </nz-form-control>
+                    </nz-form-item>
                 </div>
-
             </div>
-            
-            <div class="submit-btn">
-                <button type="submit">Créer</button>
+            <!-- Row 5 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="24">
+                    <nz-form-item>
+                        <nz-form-label>Résolution</nz-form-label>
+                        <nz-form-control>
+                            <textarea rows="4" nz-input class="resolution" formControlName=""></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
-
+            <!-- Row 6 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                    <nz-form-label>Mots clé</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName=""/>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                      <nz-form-label>Contournement de ce problème</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input formControlName="workaround"/>
+                      </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row [nzGutter]="24"> 
+              <div nz-col [nzSpan]="12">
+                <nz-form-item>
+                  <nz-form-label>Fichier</nz-form-label>
+                  <nz-form-control>
+                    <button>Parcourir...</button>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="12" class="search-area">
+                <button>Créer</button>
+              </div>
+            </div>
         </form>
 
     </div>

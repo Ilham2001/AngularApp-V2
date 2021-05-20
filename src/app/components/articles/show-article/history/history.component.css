@@ -1,0 +1,44 @@
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+table tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+table thead th {
+    font-weight: normal;
+    padding: 8px;
+    border: 2px solid #e3e5ed;
+    border-width: 0 0 2px;
+    background-color: #fff;
+    color: #717894;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+table td {
+    padding: 8px;
+    border: 1px solid #e3e5ed;
+    border-width: 0;
+    text-align: center;
+    vertical-align: top;
+}
+
+table tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+

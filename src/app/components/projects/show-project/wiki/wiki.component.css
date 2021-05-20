@@ -1,0 +1,31 @@
+.operations {
+    position: relative;
+    padding-bottom: 0px;
+    margin: 10px;
+    float: right;
+}
+
+.operations a {
+    border-radius: 3px;
+    font-size: 13px;
+    border-color: transparent;
+    background-color: #f0f2f5 ;
+    color: #212136;
+    padding: 6px 8px 6px 8px;
+    margin: 5px;
+}
+
+nz-list nz-list-item nz-list-item-meta-title h1 {
+    border-bottom: 2px solid #f3f3f3;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ i {
+    padding-right: 5px;
+}
+
+nz-list nz-list-item nz-list-item-meta-title .icon {
+    float: right;
+    font-size: 15px;
+}

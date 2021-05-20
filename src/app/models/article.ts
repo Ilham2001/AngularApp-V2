@@ -9,6 +9,7 @@ export class Article {
     cause:any;
     resolution:any;
     keywords:any;
+    workaround:any;
     category_id:number;
-
+    updated_at:any;
 }

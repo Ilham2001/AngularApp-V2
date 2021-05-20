@@ -19,4 +19,8 @@ export class CategoryService {
   getCategory(id) {
     return this.httpClient.get('http://127.0.0.1:8000/api/category/'+id);
   }
+
+  getLengthOfArticles(id) {
+    return this.httpClient.get('http://localhost:8000/api/category/length/'+id);
+  }
 }

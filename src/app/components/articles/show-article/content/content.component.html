@@ -1,0 +1,45 @@
+<div>
+    <table>
+        <thead>
+            <th colspan="2">
+               Informations
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+              <th>Environnement</th>
+              <td>{{ article?.environment }}</td>
+            </tr>
+
+            <tr>
+              <th>Question/Description du problème</th>
+              <td>{{ article?.description }}</td>
+            </tr>
+
+            <tr>
+              <th>Message d'erreur</th>
+              <td>{{ article?.error_message }}</td>
+            </tr>
+
+            <tr>
+                <th>Numéro de Ticket</th>
+                <td>{{ article?.ticket_number }}</td>
+            </tr>
+            
+            <tr>
+                <th>Cause</th>
+                <td>{{ article?.cause }}</td>
+            </tr>
+
+            <tr>
+                <th>Résolution</th>
+                <td>{{ article?.resolution }}</td>
+            </tr>
+
+            <tr>
+                <th>Contournement de ce problème</th>
+                <td>{{ article?.workaround }}</td>
+            </tr>
+        </tbody>
+      </table>
+</div>

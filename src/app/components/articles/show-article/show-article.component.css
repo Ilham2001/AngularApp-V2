@@ -1,0 +1,54 @@
+h1 {
+    font-weight: bold;
+    font-size: 26px;
+}
+h3 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.description p {
+    font-size: 14px;
+    color: gray;
+    padding-top: 20px;
+}
+
+
+.title-actions {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #f3f3f3;
+}
+
+.title-actions .title {
+    float: left;
+}
+
+.title-actions .actions {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+}
+
+.title-actions .actions a {
+    border-radius: 3px;
+    font-size: 13px;
+    border-color: transparent;
+    background-color: #f0f2f5 ;
+    color: #212136;
+    padding: 6px 8px 6px 8px;
+    margin: 5px;
+}
+
+.title-actions .actions a:hover {
+    background-color:  #E8E8E8;
+}
+
+.title-actions .actions a i {
+    padding-right: 5px;
+}

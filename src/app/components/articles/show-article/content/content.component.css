@@ -1,0 +1,31 @@
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    width: 100%;
+    border: 1px solid #dddddd;
+}
+
+table thead th {
+    font-size: 16px;
+    background-color: #f3f3f3;
+    text-align: center;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    
+}
+
+table tbody tr {
+    border: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #f3f3f3;
+}
+

@@ -1,17 +1,33 @@
-<div>
-    <nz-list nzItemLayout="horizontal" *ngFor="let wiki of project?.wikis" >
+<div class="wiki">
+    <div class="operations">
+        <a [routerLink]="'/add_wiki/'+project?.id"><i nz-icon nzType="plus" nzTheme="outline"></i>Nouvelle page wiki</a>
+        <a [routerLink]=""><i nz-icon nzType="edit" nzTheme="outline"></i>Modifier</a>
+        <a [routerLink]=""><i nz-icon nzType="lock" nzTheme="outline"></i>Verrouiller</a>
+        <a [routerLink]=""><i nz-icon nzType="delete" nzTheme="outline"></i>Supprimer</a>
+        <a [routerLink]=""><i nz-icon nzType="history" nzTheme="outline"></i>Historique</a>
+    </div><br><br><br>
+    <nz-list nzItemLayout="horizontal" *ngFor="let wiki of project?.wikis | paginate : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totlaItems: count };" >
         <nz-list-item>
             <nz-list-item-meta>
                 <nz-list-item-meta-title>
-                    <a [routerLink]="">
-                        {{ wiki?.title }}
-                    </a>
+                    <h1>
+                        {{ wiki?.title }} <a [routerLink]="" class="icon"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+                    </h1>
+                    <div class="description" [style.height.%]="height">
+                        <p [innerHTML] ="wiki?.content">
+                            
+                        </p>
+                    </div>
+                    
                 </nz-list-item-meta-title>
-
-                <nz-list-item-meta-description>
-                    {{ wiki?.content }}
-                </nz-list-item-meta-description>
           </nz-list-item-meta>
         </nz-list-item>
     </nz-list>
 </div>
+
+<!--
+    
+-->

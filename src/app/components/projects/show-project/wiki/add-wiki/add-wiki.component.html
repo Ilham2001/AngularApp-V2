@@ -1,0 +1,16 @@
+<div>
+    <form (ngSubmit)="onSubmit()">
+        <div class="title">
+            <label for="">Titre :</label>
+            <input type="text" name="title" [(ngModel)]="wiki.title">
+        </div>
+        <div class="content">
+            <ckeditor name="content" [config]="config" [(ngModel)]="wiki.content"></ckeditor>
+        </div>
+        <div class="file">
+            <label for="">Fichiers :</label>
+            <button class="upload">Parcourir...</button>
+        </div> 
+        <button type="submit" class="submit-btn">Créer</button>
+    </form>
+</div>

@@ -26,7 +26,7 @@ export class ShowProjectComponent implements OnInit {
     this.projectService.getProject(this.project_id).subscribe(
       response => {
         this.project = response;
-        //console.log(this.project)
+        //console.log(this.project);
       }
     )
   }

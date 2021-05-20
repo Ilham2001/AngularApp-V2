@@ -1,0 +1,30 @@
+<div>
+    <div class="title-btn">
+        <div class="title">
+            <h3>Projets</h3>
+        </div>
+        <div class="btn">
+            <a [routerLink]="'/add_project'"><i nz-icon nzType="plus" nzTheme="outline"></i>Nouveau projet</a>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Projet</th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of projects">
+                <td class="user">
+                    {{ project.name }}
+                </td>
+                <td class="action">
+                    <a (click)="deleteProject($event)" id="{{ project.id }}"><i nz-icon nzType="delete" nzTheme="fill"></i> Supprimer</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

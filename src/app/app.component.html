@@ -1,77 +1,122 @@
-<nz-layout class="app-layout">
 
-  <nz-sider class="menu-sidebar"
-            nzCollapsible
-            nzWidth="256px"
-            nzBreakpoint="md"
-            [(nzCollapsed)]="isCollapsed"
-            [nzTrigger]="null">
-    <div class="sidebar-logo">
-      <a href="#" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Gestion de projet</h1>
-      </a>
+  <!-- If not logged in -->
+  <div *ngIf="loggedIn === false">
+    <div class="form">
+      <form nz-form class="login-form" [formGroup]="login_form" (ngSubmit)="onSubmitLogin()">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Veuillez saisir votre email !">
+      
+              <nz-input-group nzPrefixIcon="user">
+                <input type="text" nz-input placeholder="email" formControlName="email"/>
+                
+              </nz-input-group>
+             
+            </nz-form-control>
+          </nz-form-item>
+      
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Veuillez saisir votre mot de passe !">
+      
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input placeholder="Mot de passe" formControlName="password"/>
+              </nz-input-group>
+      
+              <div *ngIf="submitted && f.password.errors">
+                <div *ngIf="f.password.errors.required">
+                  Veuillez saisir votre mot de passe
+                </div>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+      
+          <button nz-button type="submit" class="login-form-button login-form-margin">Se connecter</button>
+      </form>
     </div>
-    <br>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      
-      <li nz-menu-item>
-          <a [routerLink]="'/home'">
-            <i nz-icon nzType="home"></i>
-            <span>Accueil</span>
+  </div>
+  <!-- Is logged in : display isdebar and header -->
+    <nz-layout class="app-layout" *ngIf="loggedIn === true">
+
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [(nzCollapsed)]="isCollapsed"
+              [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a href="#" target="_blank">
+          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+          <h1>Gestion de projet</h1>
+        </a>
+      </div>
+      <br>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        
+        <li nz-menu-item>
+            <a [routerLink]="'/home'">
+              <i nz-icon nzType="home"></i>
+              <span>Accueil</span>
+            </a>
+        </li>
+  
+        <li nz-menu-item>
+          <a [routerLink]="'/projects'">
+            <i nz-icon nzType="fund-projection-screen" nzTheme="outline"></i>
+            <span>Projets</span> 
           </a>
-      </li>
-
-      <li nz-menu-item>
-        <a [routerLink]="'/projects'">
-          <i nz-icon nzType="fund-projection-screen" nzTheme="outline"></i>
-          <span>Projets</span> 
-        </a>
-      </li>
-
-      <li nz-menu-item>
-        <a [routerLink]="">
-          <i nz-icon nzType="user" nzTheme="outline"></i>
-          <span>Administration</span> 
-        </a>
-      </li>
-
-      <li nz-menu-item>
-        <i nz-icon nzType="setting" nzTheme="outline"></i>
-        <span>Mon compte</span> 
-      </li>
-
-      <li nz-menu-item>
-        <i nz-icon nzType="logout" nzTheme="outline"></i>
-        <span>Déconnexion</span> 
-      </li>
-      
-    </ul>
-  </nz-sider>
-
-  <nz-layout>
-    <nz-header>
-      <div class="app-header">
-        <span>
-            <i class="header-trigger trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
-        </span>
-        <span>
-          <label>
-            <input type="text" placeholder="Recherche">
-            <i class="search-icon" nz-icon nzType="search" nzTheme="outline"></i>
-          </label>
-        </span>
-        <span class="username">
-          Ilham - Admin
-        </span>
- 
-      </div>
-    </nz-header>
-    <nz-content>
-      <div class="inner-content">
-
-        <router-outlet></router-outlet>
-      </div>
-    </nz-content>
+        </li>
+  
+        <li nz-menu-item>
+          <a [routerLink]="'/administration'">
+            <i nz-icon nzType="user" nzTheme="outline"></i>
+            <span>Administration</span> 
+          </a>
+        </li>
+  
+        <li nz-menu-item>
+          <i nz-icon nzType="setting" nzTheme="outline"></i>
+          <span>Mon compte</span> 
+        </li>
+  
+        <li nz-menu-item>
+          <a (click)="logout()">
+            <i nz-icon nzType="logout" nzTheme="outline"></i>
+            <span>Déconnexion</span> 
+          </a>
+        </li>
+        
+      </ul>
+    </nz-sider>
+  
+    <nz-layout class="content-layout">
+      <nz-header>
+        <div class="app-header">
+          <span>
+              <i class="header-trigger trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
+          </span>
+          <span>
+            <form (ngSubmit)="onSubmit()">
+              
+              <label>
+                <input type="text" placeholder="Recherche" [formControl]="search">
+                <i class="search-icon" nz-icon nzType="search" nzTheme="outline"></i>
+              </label>
+  
+            </form>
+          </span>
+          <span class="username">
+            {{ authenticatedUser?.first_name }} - {{ authenticatedUser?.role }}
+          </span>
+   
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+  
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  
+    
   </nz-layout>
-</nz-layout>
+ 

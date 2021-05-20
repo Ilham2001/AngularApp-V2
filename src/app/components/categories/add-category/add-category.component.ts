@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class AddCategoryComponent implements OnInit {
   categories:any;
   selectedCategory:number;
 
-  constructor(private categoryService:CategoryService) { }
+ // message:any;
+
+  constructor(private categoryService:CategoryService, private message: NzMessageService) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -32,12 +35,13 @@ export class AddCategoryComponent implements OnInit {
     this.categoryService.storeData(this.category).subscribe(
       response => {
         console.log(response);
+        this.createMessage('success');
       }
     )
   }
 
-  selected() {
-    //console.log(this.selectedCategory);
+  createMessage(type: string): void {
+    this.message.create(type, 'Catégorie créée');
   }
 
 }

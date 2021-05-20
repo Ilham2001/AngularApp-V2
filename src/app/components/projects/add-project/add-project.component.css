@@ -2,69 +2,38 @@ h3 {
   font-weight: bold;
   font-size: 18px;
 }
-
-.add-form {
+form {
   width: 100%;
+  height: 100%;
   align-items: center;
-}
-
-
-.add-form label  {
-  display: inline-block;
-  width: 240px;
-  text-align: right;
-  padding-bottom: 15px;
   
-  margin: 10px;
 }
 
-.add-form input, .add-form select {
-  display: inline-block;
-  width: 500px;
-  margin: 10px;
-  border: 1px solid #d1d3e0;
-  border-radius: 2px;
-  color: #3e425a;
-}
-
-.add-form input:focus, .add-form select:focus {
-  outline: none !important;
-  border-color: rgba(0,0,128,0.5);
-  box-shadow: 0 0 5px rgba(0,0,128,0.3);
-}
-
-
-.add-form textarea {
-  vertical-align:top;
-  display: inline-block;
-  width: 800px;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid #d1d3e0;
-  border-radius: 2px;
-  color: #3e425a;
-}
-
-.add-form textarea:focus {
-  outline: none !important;
-  border-color: rgba(0,0,128,0.5);
-  box-shadow: 0 0 5px rgba(0,0,128,0.3);
-}
-
-.add-form .project-isPublic input {
-  width: 15px;
-  margin: 10px;
-}
-
- .submit-btn {
+form .submit-btn button {
   float: right;
+}
+
+.ant-advanced-search-form {
+  padding: 24px;
+  background: #fbfbfb;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+}
+
+[nz-form-label] {
+  overflow: visible;
+}
+
+button {
+  padding-left: 6px;
+  padding-right: 6px;
+  width: 60px;
   border-radius: 3px;
   font-size: 14px;
   border-color: transparent;
   background-color: #0065ff;
   color: #fff;
-  margin: 10px;
 }
- .submit-btn:hover {
-  background-color:  #434648;
+.search-area {
+  text-align: right;
 }

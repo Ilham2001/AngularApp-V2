@@ -4,44 +4,74 @@
     </div>
     <div class="add-form">
        
-        <form (ngSubmit)="onSubmit()">
-            <div>
-                <label for="">Nom du projet :</label>
-                <input type="text" name="name" [(ngModel)]="project.name">
+        <form  nz-form class="ant-advanced-search-form" [formGroup]="addProject" (ngSubmit)="onSubmit()">
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="5" nzRequired>Nom du projet</nz-form-label>
+                        <nz-form-control nzErrorTip="Veuillez saisir un nom à votre projet">
+                          <input nz-input formControlName="name"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
             
-            <div>
-                <label for="">Description du projet : </label>
-                <textarea name="description" [(ngModel)]="project.description"></textarea>
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="5">Description</nz-form-label>
+                        <nz-form-control>
+                            <textarea rows="3" nz-input formControlName="description"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
-            
-            <div>
-                <label for="">Site web : </label>
-                <input type="text" name="website" [(ngModel)]="project.website">
-                
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="5">Site web</nz-form-label>
+                        <nz-form-control>
+                          <input nz-input formControlName="website"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
-           
-            <div class="project-isPublic">
-                <label for="">Public :</label>
-                <input type="checkbox" name="isPublic" [(ngModel)]="project.isPublic">
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="5">Public</nz-form-label>
+                        <nz-form-control>
+                          <input nz-input type="checkbox" formControlName="isPublic"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
-            
-            <div>
-                <label for="">Sous projet de :</label>
-                <select  name="project" [(ngModel)]="selectedProject" (change)="selected()">
-                    <option *ngFor="let project of projects" [ngValue]="project.id">
-                        {{ project.name }}
-                    </option>
-                </select>
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="5">Sous projet de</nz-form-label>
+                        <nz-form-control>
+                          <nz-select formControlName="project">
+                              <nz-option *ngFor="let project of projects" [nzValue]="project.id" [nzLabel]="project.name"></nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
-            
-            <div>
-                <label for="">Landing page :</label>
-                <input type="text" name="landing_page" [(ngModel)]="project.landing_page">
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="5">Landing page</nz-form-label>
+                        <nz-form-control>
+                          <input nz-input formControlName="landing_page"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
             </div>
-
-            <div class="submit-btn">
-                <button type="submit">Créer</button>
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="20" class="search-area">
+                    <button nz-button nzType="primary">Créer</button>
+                </div>
             </div>
            
         </form>

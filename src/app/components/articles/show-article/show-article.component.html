@@ -1,1 +1,32 @@
-<p>show-article works!</p>
+<div>
+  <div class="title-actions">
+    <div class="title">
+      <h1>{{ article?.title }}</h1>
+      Catégorie : {{ category?.title }}
+    </div>
+    <div class="actions">
+      <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
+      <a [routerLink]="'/edit_article/'+article?.id"><i nz-icon nzType="edit" nzTheme="outline"></i>Editer</a>
+      <a [routerLink]=""><i nz-icon nzType="delete" nzTheme="outline"></i>Supprimer</a>
+    </div>
+  </div>
+  <div class="description">
+    <p>
+      {{ article?.description }}
+    </p>
+  </div>
+  <nz-tabset nzType="card">
+    <nz-tab nzTitle="Contenu">
+      <app-content [article]="article"></app-content>
+    </nz-tab>
+
+    <nz-tab nzTitle="Fichiers">
+      <app-files></app-files>
+    </nz-tab>
+
+    <nz-tab nzTitle="Historique">
+      <app-history [article]="article"></app-history>
+    </nz-tab>
+  </nz-tabset>
+</div>
+ 

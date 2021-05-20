@@ -11,11 +11,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
+
+/* Zorro modules */
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+
+import { NgxPaginationModule } from 'ngx-pagination';
+/* Components */
 import { ProjectsComponent } from './components/projects/projects.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddProjectComponent } from './components/projects/add-project/add-project.component';
@@ -34,6 +49,22 @@ import { WikiConfigComponent } from './components/configuration/wiki-config/wiki
 import { CategoriesComponent } from './components/categories/categories.component';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { ShowCategoryComponent } from './components/categories/show-category/show-category.component';
+import { ContentComponent } from './components/articles/show-article/content/content.component';
+import { FilesComponent } from './components/articles/show-article/files/files.component';
+import { HistoryComponent } from './components/articles/show-article/history/history.component';
+import { AddWikiComponent } from './components/projects/show-project/wiki/add-wiki/add-wiki.component';
+
+
+import { CKEditorModule } from 'ckeditor4-angular';
+import { AuthComponent } from './components/auth/auth.component';
+import { AdministrationComponent } from './components/administration/administration.component';
+import { AdminProjectsComponent } from './components/administration/admin-projects/admin-projects.component';
+import { AdminUsersComponent } from './components/administration/admin-users/admin-users.component';
+import { AdminRolesComponent } from './components/administration/admin-roles/admin-roles.component';
+import { AddRoleComponent } from './components/administration/admin-roles/add-role/add-role.component';
+import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
+import { AddUserComponent } from './components/administration/admin-users/add-user/add-user.component';
+import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
 
 
 registerLocaleData(fr);
@@ -56,7 +87,20 @@ registerLocaleData(fr);
     WikiConfigComponent,
     CategoriesComponent,
     AddCategoryComponent,
-    ShowCategoryComponent
+    ShowCategoryComponent,
+    ContentComponent,
+    FilesComponent,
+    HistoryComponent,
+    AddWikiComponent,
+    AuthComponent,
+    AdministrationComponent,
+    AdminProjectsComponent,
+    AdminUsersComponent,
+    AdminRolesComponent,
+    AddRoleComponent,
+    EditArticleComponent,
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +115,18 @@ registerLocaleData(fr);
     ReactiveFormsModule,
     MatInputModule,
     NzListModule,
-    NzAvatarModule
+    NzAvatarModule,
+    NzTableModule,
+    NzModalModule,
+    CKEditorModule,
+    NzMessageModule,
+    NzFormModule,
+    NzInputModule,
+    NzSkeletonModule,
+    NgxPaginationModule,
+    NzSelectModule,
+    NzCheckboxModule,
+    NzButtonModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

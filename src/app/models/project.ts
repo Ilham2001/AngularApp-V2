@@ -5,9 +5,9 @@ export class Project {
     website:any;
     isPublic:boolean;
     parent_id:number;
-    mambers:any;
     landing_page:any;
     isClosed:boolean;
     categories:any;
     wikis: any;
+    members:any;
 }

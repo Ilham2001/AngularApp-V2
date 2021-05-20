@@ -10,7 +10,7 @@
             </div>
             <div>
                 <label for="">Sous catégorie de :</label>
-                <select  name="category" [(ngModel)]="selectedCategory" (change)="selected()">
+                <select  name="category" [(ngModel)]="selectedCategory">
                     <option *ngFor="let category of categories" [ngValue]="category.id">
                         {{ category.title }}
                     </option>

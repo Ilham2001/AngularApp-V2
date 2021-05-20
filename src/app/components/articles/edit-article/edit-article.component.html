@@ -1,0 +1,128 @@
+<div>
+    <div>
+        <h3>Modifier un article</h3>
+    </div>
+    <div class="add-form">
+ 
+        <form nz-form class="ant-advanced-search-form" (ngSubmit)="onSubmit()">
+            <!-- Row 1 -->
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzSpan]="12">
+                <nz-form-item>
+                  <nz-form-label>Catégorie</nz-form-label>
+                  <nz-form-control>
+                    <nz-select  name="category" [(ngModel)]="selectedCategory">
+                        <nz-option *ngFor="let category of categories" [nzValue]="category.id" [nzLabel]="category.title"></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="12">
+                <nz-form-item>
+                    <nz-form-label>Titre</nz-form-label>
+                    <nz-form-control>
+                      <input nz-input name="title" [(ngModel)]="article.title"/>
+                    </nz-form-control>
+                  </nz-form-item>
+              </div>
+            </div>
+            <!-- Row 2 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Résumé</nz-form-label>
+                        <nz-form-control>
+                          <nz-textarea-count [nzMaxCharacterCount]="100">
+                            <textarea rows="2" nz-input name="summary" [(ngModel)]="article.summary"></textarea>
+                          </nz-textarea-count>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Description</nz-form-label>
+                        <nz-form-control>
+                          <nz-textarea-count [nzMaxCharacterCount]="100">
+                            <textarea rows="2" nz-input name="desc" [(ngModel)]="article.description"></textarea>
+                          </nz-textarea-count>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <!-- Row 3 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                    <nz-form-label>Environnement</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="env" [(ngModel)]="article.environment"/>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                      <nz-form-label>Message d'erreur</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input name="errorMsg" [(ngModel)]="article.error_message"/>
+                      </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+              <!-- Row 4 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                    <nz-form-label>Numéro de ticket</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="num" [(ngModel)]="article.ticket_number"/>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                      <nz-form-label>Cause</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input name="cause" [(ngModel)]="article.cause"/>
+                      </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <!-- Row 5 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="24">
+                    <nz-form-item>
+                        <nz-form-label>Résolution</nz-form-label>
+                        <nz-form-control>
+                            <textarea rows="4" nz-input class="resolution" name="resolution" [(ngModel)]="article.resolution"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <!-- Row 6 -->
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                    <nz-form-label>Mots clé</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="keywords" [(ngModel)]="article.keywords"/>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                  <nz-form-item>
+                      <nz-form-label>Fichier</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input placeholder="placeholder"/>
+                      </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row> 
+              <div nz-col [nzSpan]="24" class="search-area">
+                <button>Créer</button>
+              </div>
+            </div>
+        </form>
+
+    </div>
+</div>

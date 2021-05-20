@@ -1,3 +1,30 @@
 <div>
-    membres du projet...
+    <div class="title-btn">
+        <div class="title">
+            <h3>Aperçu</h3>
+        </div>
+    </div>
+
+    <table >
+        <thead>
+            <tr>
+                <th>Membre</th>
+                <th>Rôle</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of project?.members">
+
+                    <td class="user">
+                        {{ member.first_name }}
+                    </td>
+                    <td class="role">
+                        {{ member.role }}
+                    </td>
+                                
+
+            </tr>
+        </tbody>
+    </table>
 </div>

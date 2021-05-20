@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { CategoryService } from 'src/app/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-articles',
@@ -12,12 +13,15 @@ export class ArticlesComponent implements OnInit {
 
   categories:any;
 
+  articles:any;
+
   @Input() project: Project;
 
-  constructor(private categoryService:CategoryService, private router:Router) { }
+  constructor(private categoryService:CategoryService, private articleService:ArticleService, private router:Router) { }
 
   ngOnInit(): void {
     this.getCategoriesData();
+    this.getArticlesData();
   }
 
   getCategoriesData() {
@@ -27,7 +31,17 @@ export class ArticlesComponent implements OnInit {
   }
 
   onSelect(category) {
-    this.router.navigate(['/show_category', category.id]);
+    this.router.navigate(['/show_category', category.id])
+      .then(() => {
+        window.location.reload(); //Navigate and refresh page
+      });
   }
+
+  getArticlesData() {
+    this.articleService.getData().subscribe(response => {
+      this.articles = response;
+    })
+  }
+
 
 }
