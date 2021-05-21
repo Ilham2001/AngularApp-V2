@@ -27,6 +27,8 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
 
 
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -65,6 +67,7 @@ import { AddRoleComponent } from './components/administration/admin-roles/add-ro
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 import { AddUserComponent } from './components/administration/admin-users/add-user/add-user.component';
 import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
+import { EditWikiComponent } from './components/configuration/wiki-config/edit-wiki/edit-wiki.component';
 
 
 registerLocaleData(fr);
@@ -100,7 +103,8 @@ registerLocaleData(fr);
     AddRoleComponent,
     EditArticleComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    EditWikiComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +130,8 @@ registerLocaleData(fr);
     NgxPaginationModule,
     NzSelectModule,
     NzCheckboxModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDropDownModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

@@ -21,11 +21,17 @@ nz-list nz-list-item nz-list-item-meta-title h1 {
     align-items: center;
 }
 
- i {
-    padding-right: 5px;
-}
 
 nz-list nz-list-item nz-list-item-meta-title .icon {
     float: right;
     font-size: 15px;
 }
+
+[nz-button] {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .dropdown-menu {
+      float: right;
+  }

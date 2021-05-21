@@ -1,1 +1,27 @@
-<p>wiki-config works!</p>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let wiki of project?.wikis">
+
+                    <td class="user">
+                        {{ wiki.title }}
+                    </td>
+
+                    <td class="action">
+                        <a (click)="deleteWiki($event)" id="{{ wiki.id }}" class="delete">
+                            <i nz-icon nzType="delete" nzTheme="fill"></i>Supprimer
+                        </a>
+                        <a [routerLink]="'/edit_wiki/'+project.id+'/'+wiki.id"><i nz-icon nzType="edit" nzTheme="fill"></i>Editer</a>
+                    </td>             
+
+            </tr>
+        </tbody>
+    </table>
+</div>

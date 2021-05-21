@@ -1,6 +1,5 @@
 <div>
     <div class="add-form">
-       nom : {{ project?.name }}
         <form *ngIf="projects" nz-form class="ant-advanced-search-form" [formGroup]="editProject" (ngSubmit)="onSubmit()">
             <!-- Row 1 -->
             <div nz-row>
@@ -52,11 +51,9 @@
                     <nz-form-item>
                         <nz-form-label>Sous projet de</nz-form-label>
                         <nz-form-control>
-                            <select formControlName="project_id">
-                                <option *ngFor="let project of projects" [ngValue]="project.id">
-                                    {{ project.name }}
-                                </option>
-                            </select>
+                            <nz-select formControlName="parent_id">
+                                <nz-option *ngFor="let project of projects" [nzValue]="project.id" [nzLabel]="project.name"></nz-option>
+                            </nz-select>
                         </nz-form-control>
                     </nz-form-item>
                 </div>
@@ -74,7 +71,7 @@
             </div>
 
             <div class="submit-btn">
-                <button type="submit">Créer</button>
+                <button type="submit">Editer</button>
             </div>
            
         </form>

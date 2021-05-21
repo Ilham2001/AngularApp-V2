@@ -1,0 +1,98 @@
+h3 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .title-btn {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title-btn .btn a  {
+    border-radius: 3px;
+    font-size: 14px;
+    border-color: transparent;
+    background-color: #f0f2f5 ;
+    color: #212136;
+    padding: 8px 10px 8px 10px;
+    float: right;
+  }
+
+  .title-btn .btn i {
+    padding-right: 5px;
+  }
+
+  .title-btn .btn a:hover {
+    background-color:  #E8E8E8;
+  }
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+table thead th {
+    font-weight: normal;
+    padding: 8px;
+    border: 2px solid #e3e5ed;
+    border-width: 0 0 2px;
+    background-color: #fff;
+    color: #717894;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+table td .role, table td .user {
+    padding: 8px;
+    border: 1px solid #e3e5ed;
+    border-width: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+table tr td a {
+  padding: 8px;
+  border: 1px solid #e3e5ed;
+  border-width: 0;
+  float: right;
+  
+}
+
+table tr td a:first-child {
+    color: #CF1A0E;
+}
+
+table tr td a:hover {
+  text-decoration: underline;
+}
+
+
+table tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+table tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+  border-bottom: 2px solid #f3f3f3;
+}
+table tr:hover {
+  background-color: #f3f3f3 ;
+}

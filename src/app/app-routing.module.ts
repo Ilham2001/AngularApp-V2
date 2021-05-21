@@ -17,6 +17,7 @@ import { EditArticleComponent } from './components/articles/edit-article/edit-ar
 import { AddUserComponent } from './components/administration/admin-users/add-user/add-user.component';
 import { AddRoleComponent } from './components/administration/admin-roles/add-role/add-role.component';
 import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
+import { EditWikiComponent } from './components/configuration/wiki-config/edit-wiki/edit-wiki.component';
 
 const routes: Routes = [
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule), canActivate: [AuthGuard] },
@@ -32,6 +33,9 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
   { path: 'add_project', component: AddProjectComponent, canActivate: [AuthGuard] },
   { path: 'show_project/:id', component: ShowProjectComponent, canActivate: [AuthGuard] },
+  /* Projects : Configuration */
+  { path: 'edit_wiki/:project_id/:wiki_id', component: EditWikiComponent, canActivate: [AuthGuard] },
+
   /* Articles */
   { path: 'show_article/:id', component: ShowArticleComponent, canActivate: [AuthGuard] },
   { path: 'add_article', component: AddArticleComponent, canActivate: [AuthGuard] },
