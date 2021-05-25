@@ -15,6 +15,8 @@ export class ShowCategoryComponent implements OnInit {
   children:Category[];
   public lengthOfArticles;
   categories:any;
+  public selectedCategory;
+  public selectedChild;
 
   constructor(private route:ActivatedRoute, private categoryService:CategoryService, private router:Router) { }
 
@@ -31,6 +33,10 @@ export class ShowCategoryComponent implements OnInit {
     this.categoryService.getCategory(this.category_id).subscribe(
       response => {
         this.category = response;
+        console.log(this.category);
+        //console.log(this.category.children.length);
+        
+        
       }
     )
   }
@@ -42,17 +48,26 @@ export class ShowCategoryComponent implements OnInit {
     });
   }
 
-  onSelect(category) {
-    this.router.navigate(['/show_category', category.id])
-      .then(() => {
-        window.location.reload(); //Navigate and refresh page
-      });
-  }
 
   //Get length of category's articles
   getLengthOfArticles() {
       this.categoryService.getLengthOfArticles(this.category_id).subscribe(response => {
         this.lengthOfArticles = response;
       })
+  }
+
+  onSelect() {
+    this.router.navigate(['/show_category', this.selectedCategory])
+      .then(() => {
+        window.location.reload(); //Navigate and refresh page
+      });
+  }
+
+  selectChild(child) {
+    console.log(child);
+    this.router.navigate(['/show_category', child])
+      .then(() => {
+        window.location.reload(); //Navigate and refresh page
+      });
   }
 }

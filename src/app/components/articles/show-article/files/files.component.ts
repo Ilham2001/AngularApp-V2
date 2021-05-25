@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Article } from 'src/app/models/article';
 
 @Component({
   selector: 'app-files',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilesComponent implements OnInit {
 
+  @Input() article: Article;
   constructor() { }
 
   ngOnInit(): void {

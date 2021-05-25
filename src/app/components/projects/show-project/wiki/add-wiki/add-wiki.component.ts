@@ -40,7 +40,10 @@ export class AddWikiComponent implements OnInit {
     const formData = new FormData();
     formData.append("title", this.addWiki.controls.title.value);
     formData.append("content", this.addWiki.controls.content.value);
-    formData.append("reference", this.files, this.files.name);
+    /* if the file exists */
+    if(this.files) {
+      formData.append("reference", this.files, this.files.name);
+    }
     formData.append("project_id",this.project_id);
     //console.log(formData);
 

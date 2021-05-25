@@ -1,28 +1,48 @@
 <div>
     <div>
-        <h3>Nouvelle catégorie</h3>
+        <h3><a [routerLink]="'/show_project/'+project.id">{{ project?.name }}</a> / Nouvelle catégorie</h3>
     </div>
     <div class="add-form">
-        <form (ngSubmit)="onSubmit()">
-            <div>
-                <label for="">Titre :</label>
-                <input type="text" name="title" [(ngModel)]="category.title">
-            </div>
-            <div>
-                <label for="">Sous catégorie de :</label>
-                <select  name="category" [(ngModel)]="selectedCategory">
-                    <option *ngFor="let category of categories" [ngValue]="category.id">
-                        {{ category.title }}
-                    </option>
-                </select>
-            </div>
-            <div>
-                <label for="">Description : </label>
-                <textarea name="description" [(ngModel)]="category.description"></textarea>
+        <form nz-form class="ant-advanced-search-form" [formGroup]="addCategory" (ngSubmit)="onSubmit()">
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="17">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="10" nzRequired>Titre</nz-form-label>
+                        <nz-form-control nzErrorTip="Veuillez saisir un titre">
+                            <input nz-input formControlName="title"/>
+                        </nz-form-control>
+                      </nz-form-item>
+                </div>
             </div>
 
-            <div class="submit-btn">
-                <button type="submit">Créer</button>
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="17">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="10">Sous catégorie de</nz-form-label>
+                        <nz-form-control>
+                            <nz-select formControlName="parent_id">
+                                <nz-option *ngFor="let category of categories" [nzValue]="category.id" [nzLabel]="category.title"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="17">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="10">Description</nz-form-label>
+                        <nz-form-control>
+                            <textarea rows="4" nz-input formControlName="description"></textarea>
+                        </nz-form-control>
+                      </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="17" class="search-area">
+                    <button nz-button nzType="primary">Créer</button>
+                </div>
             </div>
         </form>
     </div>

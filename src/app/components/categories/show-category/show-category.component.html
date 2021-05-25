@@ -6,16 +6,17 @@
 
         <div class="filter-btn">
               <div class="filter">
-                Aller à la catégorie :
-                <select type="text" name="" id="">
-                    <option value=""></option>
-                    <option *ngFor="let category of categories" (change)="onSelect(category)" value="{{ category.id }}">
-                        {{ category.title }}
-                    </option>
-                </select>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="10">Aller à la catégorie</nz-form-label>
+                     <nz-form-control>
+                        <nz-select  [(ngModel)]="selectedCategory" (ngModelChange)="onSelect()">
+                            <nz-option *ngFor="let category of categories" [nzValue]="category.id" [nzLabel]="category.title"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
             </div>
             <div class="btn">
-                <a [routerLink]=""><i nz-icon nzType="plus" nzTheme="outline"></i>Nouvel article</a>
+                <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Nouvel article</a>
             </div>
         </div>
     </div>
@@ -25,7 +26,7 @@
         <div *ngIf="category?.children.length!==0" class="sub-categories">
             <h4 class="sub-category-header">Sous catégories :</h4>
             <span *ngFor="let child of category?.children">
-                <button class="on-select" (click)="onSelect(child)">{{ child.title }} ( {{ child.getLengthOfArticles }})</button>
+                <button class="on-select" (click)="selectChild(child.id)">{{ child.title }} </button>
             </span>
         </div>
     
@@ -35,15 +36,24 @@
             <thead>
                 <th>Titre</th>
                 <th>Auteur</th>
-                <th>Crée le</th>
+                <th>Créée le</th>
                 <th>Mis à jour le</th>
             </thead>
             <tbody *ngFor="let article of category?.articles">
                 <tr>
-                    <td>{{ article.title}}</td>
-                    <td>auteur</td>
+                    <a [routerLink]="'/show_article/'+article?.id">
+                        <td>{{ article.title}}</td>
+                    </a>
+                    <td>{{ article.author }}</td>
                     <td>{{ article.created_at | date:'dd/MM/yyyy HH:MM:SS' }}</td>
                     <td>{{ article.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}</td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="category?.articles.length === 0">
+                <tr>
+                    <td colspan="4">
+                        <nz-empty></nz-empty>
+                    </td>
                 </tr>
             </tbody>
         </table>

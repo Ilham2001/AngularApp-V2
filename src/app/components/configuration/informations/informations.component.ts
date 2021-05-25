@@ -54,7 +54,6 @@ export class InformationsComponent implements OnInit {
       (response: Project) => {
         this.project = response;
         this.setFormValues();
-        console.log(this.project);
       }
     )
   }

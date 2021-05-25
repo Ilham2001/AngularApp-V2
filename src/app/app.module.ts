@@ -28,8 +28,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-
-
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 /* Components */
@@ -131,7 +132,10 @@ registerLocaleData(fr);
     NzSelectModule,
     NzCheckboxModule,
     NzButtonModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzPaginationModule,
+    NzEmptyModule,
+    NzUploadModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

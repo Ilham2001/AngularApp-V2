@@ -18,22 +18,17 @@ h3 {
   }
 
   .filter-btn {
-    position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    align-content: space-between;
+    float: right;
     padding-bottom: 18px;
   }
 
-  .filter-btn .filter {
-    margin: 5px;
-    float: right;
-    padding-right: 8px;
-  }
-
-  .filter-btn .filter select {
-    width: 200px;
+  .filter-btn .filter nz-select {
+    width: 180px;
 }
+
 
 .title-btn .filter-btn .btn a {
     border-radius: 3px;
@@ -43,6 +38,7 @@ h3 {
     color: #212136;
     padding: 8px 10px 8px 10px;
     float: right;
+    margin: 5px;
   }
   .title-btn .filter-btn .btn a i {
     padding-right: 5px;
@@ -127,7 +123,32 @@ table td {
 }
 
 table tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+table tr {
+  display: table-row; 
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+  border-bottom: 2px solid #f3f3f3;
+}
+table tr:hover {
+  background-color: #f3f3f3 ;
+}
+
+table tr a {
+  color: #0039a6 ;
+}
+
+table tr a:hover {
+  color: #0065ff;
+  text-decoration: underline;
 }

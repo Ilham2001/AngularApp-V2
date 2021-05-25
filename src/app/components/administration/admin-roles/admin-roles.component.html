@@ -22,7 +22,7 @@
         <tbody>
             <tr *ngFor="let role of roles">
                 <td class="role">
-                    {{ role.name }}
+                    {{ role.name }} 
                 </td>
                 <td class="action">
                     <a (click)="deleteRole($event)" id="{{ role.id }}"><i nz-icon nzType="delete" nzTheme="fill"></i>Supprimer</a>

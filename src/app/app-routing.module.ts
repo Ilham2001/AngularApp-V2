@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'add_article', component: AddArticleComponent, canActivate: [AuthGuard] },
   { path: 'edit_article/:id', component: EditArticleComponent, canActivate: [AuthGuard] },
   /* Categories */
-  { path: 'add_category', component: AddCategoryComponent, canActivate: [AuthGuard] },
+  { path: 'add_category/:project_id', component: AddCategoryComponent, canActivate: [AuthGuard] },
   { path: 'show_category/:id', component: ShowCategoryComponent, canActivate: [AuthGuard] },
   /* Wikis */
   { path: 'add_wiki/:id', component: AddWikiComponent, canActivate: [AuthGuard]  }

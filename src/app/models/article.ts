@@ -12,4 +12,7 @@ export class Article {
     workaround:any;
     category_id:number;
     updated_at:any;
+    author:string;
+    documents:any;
+    user_id:number;
 }

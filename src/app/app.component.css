@@ -142,3 +142,7 @@ border-color: transparent;
 .login-form-button:hover {
 background-color:   #0065e0;
 }
+
+.overflow-ng-content {
+overflow: overlay;
+}

@@ -12,12 +12,13 @@ import { ArticleService } from 'src/app/services/article.service';
 export class ArticlesComponent implements OnInit {
 
   categories:any;
-
+  selectedCategory:any;
   articles:any;
 
   @Input() project: Project;
 
-  constructor(private categoryService:CategoryService, private articleService:ArticleService, private router:Router) { }
+  constructor(private categoryService:CategoryService, private articleService:ArticleService, 
+    private router:Router) { }
 
   ngOnInit(): void {
     this.getCategoriesData();
@@ -30,11 +31,13 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
-  onSelect(category) {
-    this.router.navigate(['/show_category', category.id])
-      .then(() => {
+  onSelect() {
+    console.log(this.selectedCategory);
+
+    this.router.navigate(['/show_category', this.selectedCategory])
+      /*.then(() => {
         window.location.reload(); //Navigate and refresh page
-      });
+      });*/
   }
 
   getArticlesData() {
@@ -42,6 +45,7 @@ export class ArticlesComponent implements OnInit {
       this.articles = response;
     })
   }
+
 
 
 }

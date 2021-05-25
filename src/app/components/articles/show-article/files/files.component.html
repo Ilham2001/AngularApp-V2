@@ -1,1 +1,26 @@
-<p>files works!</p>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Nom du fichier
+                </th>
+                <th>
+                    
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let document of article?.documents">
+            <tr>
+                <td>
+                    {{ document.title }}
+                </td>
+                <td>
+                    <a [routerLink]="">
+                        <i nz-icon nzType="download" nzTheme="outline"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

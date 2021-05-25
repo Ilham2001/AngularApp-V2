@@ -7,7 +7,7 @@
     <div class="actions">
       <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
       <a [routerLink]="'/edit_article/'+article?.id"><i nz-icon nzType="edit" nzTheme="outline"></i>Editer</a>
-      <a [routerLink]=""><i nz-icon nzType="delete" nzTheme="outline"></i>Supprimer</a>
+      <a (click)="deleteArticle()"><i nz-icon nzType="delete" nzTheme="outline"></i>Supprimer</a>
     </div>
   </div>
   <div class="description">
@@ -21,7 +21,7 @@
     </nz-tab>
 
     <nz-tab nzTitle="Fichiers">
-      <app-files></app-files>
+      <app-files [article]="article"></app-files>
     </nz-tab>
 
     <nz-tab nzTitle="Historique">

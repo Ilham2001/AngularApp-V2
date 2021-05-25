@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from 'src/app/services/role.service';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalService, NzModalRef } from 'ng-zorro-antd/modal';
 
 
 @Component({
@@ -10,6 +10,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 })
 export class AdminRolesComponent implements OnInit {
 
+  isVisible = false;
   roles:any; 
   role_id: number;
   role:any;
@@ -18,6 +19,7 @@ export class AdminRolesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRolesData();
+    
   }
 
   getRolesData() {

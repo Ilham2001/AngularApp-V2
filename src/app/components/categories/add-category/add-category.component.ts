@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectService } from 'src/app/services/project.service';
+import { Project } from 'src/app/models/project';
 
 
 @Component({
@@ -12,32 +16,58 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class AddCategoryComponent implements OnInit {
 
   category = new Category;
-  categories:any;
-  selectedCategory:number;
+  categories: Array<Category>;
+  project_id:number;
+  project = new Project;
 
- // message:any;
+  addCategory = this.fb.group({
+    title: new FormControl('', Validators.required),
+    parent_id: new FormControl(''),
+    description: new FormControl('')
+  })
 
-  constructor(private categoryService:CategoryService, private message: NzMessageService) { }
+  constructor(private categoryService:CategoryService,private route:ActivatedRoute,
+    private message: NzMessageService, private fb: FormBuilder,
+    private projectService:ProjectService, private router:Router) { }
 
   ngOnInit(): void {
+    this.project_id = parseInt(this.route.snapshot.paramMap.get('project_id'));
     this.getCategories();
+    this.getProject();
   }
 
   getCategories() {
-    this.categoryService.getData().subscribe(response => {
+    this.categoryService.getData().subscribe(
+      (response: Array<Category>) => {
       this.categories = response;
+      
     });
   }
 
-  onSubmit() {
-    this.category.parent_id = this.selectedCategory;
-    //console.log(this.category);
-    this.categoryService.storeData(this.category).subscribe(
-      response => {
-        console.log(response);
-        this.createMessage('success');
+  getProject() {    
+    this.projectService.getProject(this.project_id).subscribe(
+      (response: Project) => {
+        this.project = response;
       }
     )
+  }
+
+  onSubmit() {
+    if(this.addCategory.valid) {
+      this.categoryService.storeData(this.addCategory.value).subscribe(
+        response => {
+          //console.log(response);
+          this.router.navigate(['/show_project/'+this.project_id]);
+          this.createMessage('success');
+        }
+      )
+    }
+    else {
+      for (const i in this.addCategory.controls) {
+        this.addCategory.controls[i].markAsDirty();
+        this.addCategory.controls[i].updateValueAndValidity();
+      }
+    }
   }
 
   createMessage(type: string): void {
