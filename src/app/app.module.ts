@@ -69,6 +69,7 @@ import { EditArticleComponent } from './components/articles/edit-article/edit-ar
 import { AddUserComponent } from './components/administration/admin-users/add-user/add-user.component';
 import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
 import { EditWikiComponent } from './components/configuration/wiki-config/edit-wiki/edit-wiki.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 
 registerLocaleData(fr);
@@ -105,7 +106,8 @@ registerLocaleData(fr);
     EditArticleComponent,
     AddUserComponent,
     EditUserComponent,
-    EditWikiComponent
+    EditWikiComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,65 @@
+<div>
+    <div nz-row>
+        <div nz-col nzSpan="12">
+            <nz-list nzItemLayout="horizontal" *ngFor="let article of searchResult?.articles">
+                    <nz-list-item>
+                        <nz-list-item-meta class="article">
+                            <nz-list-item-meta-title>
+                                <a [routerLink]="'/show_article/'+article?.id">
+                                    Article : {{ article.title }}
+                                </a>
+                            </nz-list-item-meta-title>
+                
+                            <nz-list-item-meta-description class="description">
+                                <p>
+                                    {{ article.description | slice:0:60 }}...
+                                </p>
+                                
+                            </nz-list-item-meta-description>
+                    </nz-list-item-meta>
+                    </nz-list-item>
+            </nz-list>
+            <nz-list nzItemLayout="horizontal" *ngFor="let project of searchResult?.projects">
+                
+                    <nz-list-item>
+                        <nz-list-item-meta class="article">
+                            <nz-list-item-meta-title>
+                                <a [routerLink]="'/show_article/'+article?.id">
+                                   Projet : {{ project.name }}
+                                </a>
+                            </nz-list-item-meta-title>
+                
+                            <nz-list-item-meta-description class="description">
+                                <p>
+                                    {{ project.description | slice:0:60 }}...
+                                </p>
+                               
+                            </nz-list-item-meta-description>
+                    </nz-list-item-meta>
+                    </nz-list-item>
+                
+            </nz-list>
+            <nz-list nzItemLayout="horizontal" *ngFor="let wiki of searchResult?.wikis">
+                
+                <nz-list-item>
+                    <nz-list-item-meta class="article">
+                        <nz-list-item-meta-title>
+                            <a [routerLink]="'/show_article/'+article?.id">
+                               Wiki : {{ wiki.title }}
+                            </a>
+                        </nz-list-item-meta-title>
+            
+                        <nz-list-item-meta-description class="description">
+                            <p [innerHTML] ="wiki?.content | slice:0:60">
+                                ... 
+                            </p>
+                            
+                        </nz-list-item-meta-description>
+                </nz-list-item-meta>
+                </nz-list-item>
+            
+        </nz-list>
+        </div>
+       
+    </div>
+</div>

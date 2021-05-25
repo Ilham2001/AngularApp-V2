@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { User } from './models/user';
 import { AppService } from './services/app.service';
+import { AccessModeService } from './services/access-mode.service';
+import { SearchService } from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +33,7 @@ export class AppComponent {
   })
 
   constructor(private userService:UserService, private formBuilder:FormBuilder,
-    private router:Router, private appService:AppService) {}
+    private router:Router, private appService:AppService, private searchService:SearchService) {}
 
   loginForm() {
     this.login_form = this.formBuilder.group({
@@ -49,7 +51,7 @@ export class AppComponent {
       console.log("logged in");
       this.token = localStorage.getItem('token');
       this.userData = jwt_decode(this.token);
-      console.log(this.userData);
+      //console.log(this.userData);
       this.getAuthenticatedUser();
     }
     else {
@@ -57,14 +59,19 @@ export class AppComponent {
       console.log("not logged in");
       //window.location.reload();
       this.token = localStorage.getItem('token');
-      console.log(this.token);
+      //console.log(this.token);
 
     }
-    
   }
 
   onSubmit() {
     console.log(this.search.value);
+    this.searchService.searchResult(this.search.value).subscribe(
+      response => {
+        this.searchService.setSearchResult(response);
+        this.router.navigate(['search_result']);
+      }
+    )
   }
 
   get f() {
@@ -109,7 +116,7 @@ export class AppComponent {
     this.userService.getUser(this.userData.id).subscribe(
       (response: User) => {
         this.authenticatedUser = response;
-        console.log(this.authenticatedUser);
+        //console.log(this.authenticatedUser);
         /* Store the id of the authenticated user in the service  */
         this.appService.setAuthenticatedUser(this.authenticatedUser.id);
         

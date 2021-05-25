@@ -8,7 +8,6 @@ import { UserService } from './user.service';
 export class AppService {
 
   authenticatedUserId: number;
-  user = new User;
 
   constructor(private userService:UserService) { }
 
@@ -18,15 +17,6 @@ export class AppService {
 
   getAuthenticatedUser() {
     return this.authenticatedUserId;
-  }
-
-  getAuthenticatedUserPermissions() {
-    this.userService.getUser(this.authenticatedUserId).subscribe(
-      (response: User) => {
-        this.user = response;
-      }
-    )
-    return this.user;
   }
 
 }

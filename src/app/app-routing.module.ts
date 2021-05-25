@@ -18,11 +18,16 @@ import { AddUserComponent } from './components/administration/admin-users/add-us
 import { AddRoleComponent } from './components/administration/admin-roles/add-role/add-role.component';
 import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
 import { EditWikiComponent } from './components/configuration/wiki-config/edit-wiki/edit-wiki.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 const routes: Routes = [
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule), canActivate: [AuthGuard] },
   { path: 'login', component: AppComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+
+  /* Search result */
+  { path: 'search_result', component: SearchResultComponent, canActivate: [AuthGuard] },
+
   /* Administration */
   { path: 'administration', component: AdministrationComponent, canActivate: [AuthGuard] },
   { path: 'add_user', component: AddUserComponent, canActivate: [AuthGuard] },

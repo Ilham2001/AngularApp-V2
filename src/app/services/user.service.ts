@@ -31,5 +31,9 @@ export class UserService {
   updateUser(id,data) {
     return this.httpClient.put('http://127.0.0.1:8000/api/user/'+id,data);
   }
+
+  getUserPermissions(id) {
+    return this.httpClient.get('http://localhost:8000/api/user/getPermissions/'+id);
+  }
   
 }
