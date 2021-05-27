@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -9,16 +10,29 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private searchService:SearchService) { }
 
-  searchResult:any;
+  private subscriptionName: Subscription;
+
+  searchResult: any;
+
+  constructor(private route: ActivatedRoute, private searchService: SearchService) {
+    
+    this.subscriptionName = this.searchService.getUpdate().subscribe
+      ((response): any => {
+        this.searchResult = response.result;
+        console.log(this.searchResult);
+
+      });
+  }
 
   ngOnInit(): void {
     this.searchResult = this.searchService.getSearchResult();
-    
-    //window.location.reload(); //Navigate and refresh page
     console.log(this.searchResult);
-     
+
+  }
+
+  ngOnDestroy() {
+    this.subscriptionName.unsubscribe();
   }
 
 }

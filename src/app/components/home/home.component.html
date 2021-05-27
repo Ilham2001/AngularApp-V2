@@ -1,1 +1,61 @@
-home
+<div>
+    <div class="title">
+        <h3>Tableau de bord</h3>
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="12">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Utilisateur</th>
+                        <th>Pages wiki créées</th>
+                        <th>Articles crées</th>
+                        <th>Projets crées</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let user of users">
+                    <tr>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.wikis_length }}</td>
+                        <td>{{ user.articles_length }}</td>
+                        <td>{{ user.projects_length }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let action of actions">
+                    <tr>
+                        <td>{{ action?.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}</td>
+                        <td *ngIf="action?.type === 'CA'">
+                                {{ action.user }} a crée un article 
+                        </td>
+                        <td *ngIf="action?.type == 'CP'"> 
+                                {{ action.user }} a crée un projet
+                        </td>
+                            
+                        <td *ngIf="action?.type === 'UA'"> 
+                            {{ action.user }} a mis à jour l'article 
+                        </td>
+                        
+                        <td *ngIf="action?.type === 'CW'"> 
+                            {{ action.user }} a crée une page wiki 
+                        </td>
+                            
+                        <td *ngIf="action?.type === 'UW'"> 
+                            {{ action.user }} a mis à jour une page wiki 
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

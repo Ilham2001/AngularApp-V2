@@ -59,7 +59,6 @@ import { AddWikiComponent } from './components/projects/show-project/wiki/add-wi
 
 
 import { CKEditorModule } from 'ckeditor4-angular';
-import { AuthComponent } from './components/auth/auth.component';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { AdminProjectsComponent } from './components/administration/admin-projects/admin-projects.component';
 import { AdminUsersComponent } from './components/administration/admin-users/admin-users.component';
@@ -70,6 +69,7 @@ import { AddUserComponent } from './components/administration/admin-users/add-us
 import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
 import { EditWikiComponent } from './components/configuration/wiki-config/edit-wiki/edit-wiki.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 
 registerLocaleData(fr);
@@ -97,7 +97,6 @@ registerLocaleData(fr);
     FilesComponent,
     HistoryComponent,
     AddWikiComponent,
-    AuthComponent,
     AdministrationComponent,
     AdminProjectsComponent,
     AdminUsersComponent,
@@ -107,7 +106,8 @@ registerLocaleData(fr);
     AddUserComponent,
     EditUserComponent,
     EditWikiComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

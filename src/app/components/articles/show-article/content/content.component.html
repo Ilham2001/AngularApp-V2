@@ -33,7 +33,9 @@
 
             <tr>
                 <th>Résolution</th>
-                <td>{{ article?.resolution }}</td>
+                <td>
+                  <p [innerHTML] ="article?.resolution"></p>
+                </td>
             </tr>
 
             <tr>

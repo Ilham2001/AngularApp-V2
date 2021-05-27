@@ -9,7 +9,6 @@ import { ShowProjectComponent } from './components/projects/show-project/show-pr
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { ShowCategoryComponent } from './components/categories/show-category/show-category.component';
 import { AddWikiComponent } from './components/projects/show-project/wiki/add-wiki/add-wiki.component';
-import { AuthComponent } from './components/auth/auth.component';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { AuthGuard } from './services/auth.guard';
 import { AppComponent } from './app.component';
@@ -19,6 +18,7 @@ import { AddRoleComponent } from './components/administration/admin-roles/add-ro
 import { EditUserComponent } from './components/administration/admin-users/edit-user/edit-user.component';
 import { EditWikiComponent } from './components/configuration/wiki-config/edit-wiki/edit-wiki.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 const routes: Routes = [
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule), canActivate: [AuthGuard] },
@@ -43,13 +43,15 @@ const routes: Routes = [
 
   /* Articles */
   { path: 'show_article/:id', component: ShowArticleComponent, canActivate: [AuthGuard] },
-  { path: 'add_article', component: AddArticleComponent, canActivate: [AuthGuard] },
+  { path: 'add_article/:project_id', component: AddArticleComponent, canActivate: [AuthGuard] },
   { path: 'edit_article/:id', component: EditArticleComponent, canActivate: [AuthGuard] },
   /* Categories */
   { path: 'add_category/:project_id', component: AddCategoryComponent, canActivate: [AuthGuard] },
   { path: 'show_category/:id', component: ShowCategoryComponent, canActivate: [AuthGuard] },
   /* Wikis */
-  { path: 'add_wiki/:id', component: AddWikiComponent, canActivate: [AuthGuard]  }
+  { path: 'add_wiki/:id', component: AddWikiComponent, canActivate: [AuthGuard]  },
+  /* My Account */
+  { path: 'my_account', component: MyAccountComponent, canActivate: [AuthGuard]  }
 ];
 
 @NgModule({

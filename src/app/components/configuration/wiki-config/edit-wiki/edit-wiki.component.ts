@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Wiki } from 'src/app/models/wiki';
+import { AppService } from 'src/app/services/app.service';
 import { WikiService } from 'src/app/services/wiki.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class EditWikiComponent implements OnInit {
 
   
   constructor(private wikiService:WikiService, private route:ActivatedRoute,
-    private fb: FormBuilder, private router:Router, private message: NzMessageService) { }
+    private fb: FormBuilder, private router:Router, private message: NzMessageService,
+    private appService: AppService) { }
 
   ngOnInit(): void {
     this.wiki_id = parseInt(this.route.snapshot.paramMap.get('wiki_id'));
@@ -35,9 +37,8 @@ export class EditWikiComponent implements OnInit {
       title: new FormControl('',Validators.required),
       content: new FormControl('', Validators.required),
       reference: new FormControl('', [Validators.required, Validators.email]),
-      project_id: new FormControl('', Validators.required),
-    
-  
+      project_id: new FormControl(''),
+      user_id: new FormControl('')
     });
   }
   
@@ -54,14 +55,16 @@ export class EditWikiComponent implements OnInit {
 
     this.editWiki = this.fb.group({
       title: (this.wiki.title),
-      content: (this.wiki.content)
+      content: (this.wiki.content),
+      project_id: (this.project_id),
+      user_id: (this.appService.getUserId())
     });
   }
 
 
   onSubmit() {
     if(this.editWiki.valid) {
-
+      
       this.wikiService.updateWiki(this.wiki_id, this.editWiki.value).subscribe(
         response => {
           this.router.navigate(['/show_project/'+this.project_id]);

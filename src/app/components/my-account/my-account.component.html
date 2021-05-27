@@ -1,0 +1,54 @@
+<div>
+    <div class="title-btn">
+        <div class="title">
+            <h3>Mon compte</h3>
+        </div>
+    </div>
+
+    <form nz-form class="ant-advanced-search-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="17">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="10" nzRequired>Prénom</nz-form-label>
+                    <nz-form-control nzErrorTip="Veuillez saisir un prénom">
+                        <input nz-input formControlName="first_name" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="17">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="10" nzRequired>Nom</nz-form-label>
+                    <nz-form-control nzErrorTip="Veuillez saisir un nom">
+                        <input nz-input formControlName="last_name" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="17">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="10" nzRequired>Adresse e-mail</nz-form-label>
+                    <nz-form-control nzErrorTip="Veuillez saisir une adresse e-mail">
+                        <input type="email" nz-input formControlName="email" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="17">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="10">Landing page</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="landing_page" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="17" class="search-area">
+            <button>Sauvegarder</button>
+        </div>
+    </form>
+</div>

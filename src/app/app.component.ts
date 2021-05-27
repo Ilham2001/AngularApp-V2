@@ -16,15 +16,15 @@ import { SearchService } from './services/search.service';
 export class AppComponent {
 
   loggedIn: boolean;
-  
+
   isCollapsed = false;
   submitted = false;
 
   search = new FormControl('');
 
-  data:any;
-  token:any;
-  userData:any;
+  data: any;
+  token: any;
+  userData: any;
   authenticatedUser: User;
 
   login_form = this.formBuilder.group({
@@ -32,12 +32,12 @@ export class AppComponent {
     password: ['', [Validators.required]]
   })
 
-  constructor(private userService:UserService, private formBuilder:FormBuilder,
-    private router:Router, private appService:AppService, private searchService:SearchService) {}
+  constructor(private userService: UserService, private formBuilder: FormBuilder,
+    private router: Router, private appService: AppService, private searchService: SearchService) { }
 
   loginForm() {
     this.login_form = this.formBuilder.group({
-      email: ['', [Validators.required ]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
   }
@@ -46,7 +46,7 @@ export class AppComponent {
     this.loginForm();
 
     if (localStorage.getItem('token')) {
-  
+
       this.loggedIn = true;
       console.log("logged in");
       this.token = localStorage.getItem('token');
@@ -68,8 +68,8 @@ export class AppComponent {
     console.log(this.search.value);
     this.searchService.searchResult(this.search.value).subscribe(
       response => {
-        this.searchService.setSearchResult(response);
         this.router.navigate(['search_result']);
+        this.searchService.sendUpdate(response);
       }
     )
   }
@@ -83,17 +83,17 @@ export class AppComponent {
     if (this.login_form.invalid) {
       return;
     }
-    this.userService.login(this.login_form.value).subscribe( response => {
+    this.userService.login(this.login_form.value).subscribe(response => {
       this.data = response;
-      if(this.data.status === 1) {
+      if (this.data.status === 1) {
         //console.log(response);
         this.token = this.data.data.token;
-        localStorage.setItem('token',this.token);
+        localStorage.setItem('token', this.token);
         this.loggedIn = true;
         this.router.navigate(['home'])
-        .then(() => {
-          window.location.reload(); //Navigate and refresh page
-        });
+          .then(() => {
+            window.location.reload(); //Navigate and refresh page
+          });
       }
       else {
         console.log("Echec, veuillez réssayer");
@@ -107,9 +107,9 @@ export class AppComponent {
     }
     localStorage.removeItem('token');
     this.router.navigate(['/login'])
-    .then(() => {
-      window.location.reload(); //Navigate and refresh page
-    });
+      .then(() => {
+        window.location.reload(); //Navigate and refresh page
+      });
   }
 
   getAuthenticatedUser() {
@@ -119,7 +119,7 @@ export class AppComponent {
         //console.log(this.authenticatedUser);
         /* Store the id of the authenticated user in the service  */
         this.appService.setAuthenticatedUser(this.authenticatedUser.id);
-        
+
       }
     )
   }

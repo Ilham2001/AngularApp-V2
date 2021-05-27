@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Wiki } from 'src/app/models/wiki';
+import { AppService } from 'src/app/services/app.service';
 import { DocumentService } from 'src/app/services/document.service';
 import { WikiService } from 'src/app/services/wiki.service';
 
@@ -14,18 +15,19 @@ export class AddWikiComponent implements OnInit {
 
   public project_id;
   wiki = new Wiki;
-  files:any;
-  
+  files: any;
+
   addWiki = this.fb.group({
     title: new FormControl('', Validators.required),
     content: new FormControl(''),
     reference: new FormControl(''),
-    project_id: new FormControl('')
+    project_id: new FormControl(''),
+    user_id: new FormControl('')
   });
 
 
-  constructor(private route:ActivatedRoute, private wikiService:WikiService,
-      private fb: FormBuilder, private documentService:DocumentService ) { }
+  constructor(private route: ActivatedRoute, private wikiService: WikiService,
+    private fb: FormBuilder, private documentService: DocumentService, private appService: AppService) { }
 
   ngOnInit(): void {
     this.project_id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -41,11 +43,12 @@ export class AddWikiComponent implements OnInit {
     formData.append("title", this.addWiki.controls.title.value);
     formData.append("content", this.addWiki.controls.content.value);
     /* if the file exists */
-    if(this.files) {
+    if (this.files) {
       formData.append("reference", this.files, this.files.name);
     }
-    formData.append("project_id",this.project_id);
-    //console.log(formData);
+    formData.append("project_id", this.project_id);
+    this.addWiki.controls.user_id.setValue(this.appService.getUserId());
+    formData.append("user_id", this.addWiki.controls.user_id.value);
 
     this.wikiService.storeData(formData).subscribe(
       response => {

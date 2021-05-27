@@ -1,0 +1,48 @@
+.result {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result .title {
+    float: left;
+}
+
+.result .length {
+    float: right;
+}
+
+.result .length h4 {
+    font-weight: 500;
+}
+
+nz-list a {
+    position: relative;
+    color:  #0039a6;
+    font-size: 16px;
+}
+
+nz-list a:hover {
+    color: #0065ff;
+    text-decoration: underline;
+}
+h3 {
+    font-weight: bold;
+    font-size: 18px;
+}
+.ant-advanced-search-form {
+    padding: 24px;
+    background: #fbfbfb;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+  }
+
+i {
+    color: black;
+    font-size: 20px;
+}
+
+nz-list-item-meta-description p:first-child {
+    font-style: italic;
+}

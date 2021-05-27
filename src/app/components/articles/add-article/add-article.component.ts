@@ -21,6 +21,7 @@ export class AddArticleComponent implements OnInit {
   category_id;
   article = new Article();
   files:any;
+  project_id:number;
 
   addArticle = this.fb.group({
     category_id: new FormControl(''),
@@ -35,7 +36,8 @@ export class AddArticleComponent implements OnInit {
     keywords: new FormControl(''),
     workaround: new FormControl(''),
     reference: new FormControl(''),
-    user_id: new FormControl('')
+    user_id: new FormControl(''),
+    project_id: new FormControl('')
   });
 
   constructor(private articleService:ArticleService, 
@@ -44,6 +46,7 @@ export class AddArticleComponent implements OnInit {
     private route:ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.project_id = parseInt(this.route.snapshot.paramMap.get('project_id'));
     this.getCategories();
   }
 
@@ -77,8 +80,12 @@ export class AddArticleComponent implements OnInit {
         formData.append("reference",this.files, this.files.name);
       }
 
-      this.addArticle.controls.user_id.setValue(this.appService.getAuthenticatedUser());
+      this.addArticle.controls.user_id.setValue(this.appService.getUserId());
       formData.append("user_id",this.addArticle.controls.user_id.value);
+
+      this.addArticle.controls.project_id.setValue(this.project_id);
+      formData.append("project_id",this.addArticle.controls.project_id.value);
+
   
       this.articleService.storeData(formData).subscribe(
         response => {

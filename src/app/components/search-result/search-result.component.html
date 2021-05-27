@@ -1,65 +1,89 @@
 <div>
-    <div nz-row>
-        <div nz-col nzSpan="12">
-            <nz-list nzItemLayout="horizontal" *ngFor="let article of searchResult?.articles">
-                    <nz-list-item>
-                        <nz-list-item-meta class="article">
-                            <nz-list-item-meta-title>
-                                <a [routerLink]="'/show_article/'+article?.id">
-                                    Article : {{ article.title }}
-                                </a>
-                            </nz-list-item-meta-title>
-                
-                            <nz-list-item-meta-description class="description">
-                                <p>
-                                    {{ article.description | slice:0:60 }}...
-                                </p>
-                                
-                            </nz-list-item-meta-description>
-                    </nz-list-item-meta>
-                    </nz-list-item>
-            </nz-list>
+    <div class="result">
+        <div class="title">
+            <h3>Résultats ({{ searchResult?.result_length }})</h3>
+        </div>
+        <div class="length">
+            <h4>
+                Projets ({{ searchResult?.projects_length }}) - Articles de base de connaissances ({{ searchResult?.articles_length }}) - Pages wiki ({{ searchResult?.wikis_length }})
+            </h4>
+        </div>
+    </div>
+    <div nz-row class="ant-advanced-search-form">
+        <div nz-col nzSpan="24">
             <nz-list nzItemLayout="horizontal" *ngFor="let project of searchResult?.projects">
-                
-                    <nz-list-item>
-                        <nz-list-item-meta class="article">
-                            <nz-list-item-meta-title>
-                                <a [routerLink]="'/show_article/'+article?.id">
-                                   Projet : {{ project.name }}
-                                </a>
-                            </nz-list-item-meta-title>
-                
-                            <nz-list-item-meta-description class="description">
-                                <p>
-                                    {{ project.description | slice:0:60 }}...
-                                </p>
-                               
-                            </nz-list-item-meta-description>
-                    </nz-list-item-meta>
-                    </nz-list-item>
-                
-            </nz-list>
-            <nz-list nzItemLayout="horizontal" *ngFor="let wiki of searchResult?.wikis">
-                
+
                 <nz-list-item>
                     <nz-list-item-meta class="article">
                         <nz-list-item-meta-title>
+                            <i nz-icon nzType="fund-projection-screen" nzTheme="outline"></i>
                             <a [routerLink]="'/show_article/'+article?.id">
-                               Wiki : {{ wiki.title }}
+                                 Projet : {{ project.name }}
                             </a>
                         </nz-list-item-meta-title>
-            
+
                         <nz-list-item-meta-description class="description">
-                            <p [innerHTML] ="wiki?.content | slice:0:60">
-                                ... 
+                            <p>
+                                {{ project.description | slice:0:30 }}... {{ project.description | slice:70:120 }}
                             </p>
-                            
+                            <p>
+                                {{ project.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}
+                            </p>
                         </nz-list-item-meta-description>
-                </nz-list-item-meta>
+                    </nz-list-item-meta>
                 </nz-list-item>
+
+            </nz-list>
+            <nz-list nzItemLayout="horizontal" *ngFor="let article of searchResult?.articles">
+                <nz-list-item>
+                    <nz-list-item-meta class="article">
+                        <nz-list-item-meta-title>
+                            <i nz-icon nzType="file-add" nzTheme="outline"></i>
+                            <a [routerLink]="'/show_article/'+article?.id">
+                                (Nouvel article) Article #{{ article.id }} - {{ article.title }}
+                            </a>
+                        </nz-list-item-meta-title>
+
+                        <nz-list-item-meta-description class="description">
+                            <p>
+                                Environnement: {{ article.environment | slice:0:30 }} | Description: {{ article.description | slice:0:50 }}... 
+                                | Message d'erreur: {{ article.error_message | slice:0:40 }} 
+                            </p>
+                            <p>
+                                {{ article.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}
+                            </p>
+
+                        </nz-list-item-meta-description>
+                    </nz-list-item-meta>
+                </nz-list-item>
+            </nz-list>
             
-        </nz-list>
+            <nz-list nzItemLayout="horizontal" *ngFor="let wiki of searchResult?.wikis">
+
+                <nz-list-item>
+                    <nz-list-item-meta class="article">
+                        <nz-list-item-meta-title>
+                            <i nz-icon nzType="file-text" nzTheme="outline"></i>
+                            <a [routerLink]="'/show_article/'+article?.id">
+                                Wiki : {{ wiki.title }}
+                            </a>
+                        </nz-list-item-meta-title>
+
+                        <nz-list-item-meta-description class="description">
+                            <p>
+                                {{ wiki?.content }}
+                            </p>
+                            <p>
+                                {{ wiki?.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}
+                            </p>
+
+                        </nz-list-item-meta-description>
+                    </nz-list-item-meta>
+                </nz-list-item>
+            </nz-list>
         </div>
-       
+        <div nz-col nzSpan="24" *ngIf="searchResult?.articles.length === 0 && searchResult?.projects.length === 0 && searchResult?.wikis.length === 0">
+            <nz-empty></nz-empty>
+        </div>
     </div>
 </div>

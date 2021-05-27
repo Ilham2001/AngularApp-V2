@@ -23,7 +23,8 @@ export class AddCategoryComponent implements OnInit {
   addCategory = this.fb.group({
     title: new FormControl('', Validators.required),
     parent_id: new FormControl(''),
-    description: new FormControl('')
+    description: new FormControl(''),
+    project_id: new FormControl('')
   })
 
   constructor(private categoryService:CategoryService,private route:ActivatedRoute,
@@ -54,6 +55,7 @@ export class AddCategoryComponent implements OnInit {
 
   onSubmit() {
     if(this.addCategory.valid) {
+      this.addCategory.controls.project_id.setValue(this.project_id);
       this.categoryService.storeData(this.addCategory.value).subscribe(
         response => {
           //console.log(response);

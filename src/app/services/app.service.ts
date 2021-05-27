@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import jwt_decode from 'jwt-decode';
 import { User } from '../models/user';
 import { UserService } from './user.service';
 
@@ -8,9 +9,20 @@ import { UserService } from './user.service';
 export class AppService {
 
   authenticatedUserId: number;
+  data:any;
+  token :any;
+  userData:any;
 
-  constructor(private userService:UserService) { }
 
+  constructor() { }
+
+  getUserId() {
+    this.token = localStorage.getItem('token');
+    this.userData = jwt_decode(this.token);
+    this.authenticatedUserId = this.userData.id;
+    return this.authenticatedUserId;
+  }
+  
   setAuthenticatedUser(id) {
     this.authenticatedUserId = id;
   }
@@ -18,5 +30,6 @@ export class AppService {
   getAuthenticatedUser() {
     return this.authenticatedUserId;
   }
+
 
 }
