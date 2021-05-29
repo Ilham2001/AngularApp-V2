@@ -33,7 +33,7 @@
 .sidebar-logo {
   position: relative;
   height: 64px;
-  padding-left: 24px;
+  padding-left: 10px;
   overflow: hidden;
   line-height: 64px;
   background: #001529;
@@ -42,18 +42,18 @@
 
 .sidebar-logo img {
   display: inline-block;
-  height: 32px;
-  width: 32px;
+  height: 70px;
+  width: 70px;
   vertical-align: middle;
 }
 
 .sidebar-logo h1 {
   display: inline-block;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 5px;
   color: #fff;
   font-weight: 600;
-  font-size: 18px;
-  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+  font-size: 19px;
+  font-family: system-ui;
   vertical-align: middle;
 }
 
@@ -102,7 +102,7 @@ nz-header {
     left: 15px;
     top: 2px;
 }
-.app-header .username {
+.app-header .username { 
   padding-right: 15px;
 }
 
@@ -116,33 +116,50 @@ nz-content {
   height: 100%;
 }
 
-.form {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.login-form {
-max-width: 300px;
-}
-
-.login-form-margin {
-margin-bottom: 16px;
-}
-
-
 .login-form-button {
-width: 100%;
-background-color: #0065ff;
-color: #fff;
-border-radius: 3px;
-font-size: 14px;
-border-color: transparent;
+  width: 100%;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 14px;
+  border-color: transparent;
 }
 
-.login-form-button:hover {
-background-color:   #0065e0;
-}
 
 .overflow-ng-content {
-overflow: overlay;
+  overflow: overlay;
+}
+
+ .login-form {
+  background: #fff;
+  padding: 24px;
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 230px;
+  margin-top: 170px;
+  border-radius:2px;
+}
+
+.login-logo {
+  position: relative;
+  overflow: hidden;
+  line-height: 64px;
+  transition: all .3s;
+  text-align: center;
+}
+.login-logo img {
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  vertical-align: middle;
+}
+
+
+.login-form form {
+ 
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-form .message {
+  color: red;
 }

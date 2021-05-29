@@ -4,7 +4,7 @@
             
         </div>
         <!-- Add button -->
-        <div class="btn">
+        <div class="btn" *ngIf="hasAddProject">
             <a [routerLink]="'/add_project'"><i nz-icon nzType="plus" nzTheme="outline"></i>Nouveau projet</a>
         </div>
     </div>

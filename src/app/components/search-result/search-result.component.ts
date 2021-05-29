@@ -27,8 +27,6 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchResult = this.searchService.getSearchResult();
-    console.log(this.searchResult);
-
   }
 
   ngOnDestroy() {

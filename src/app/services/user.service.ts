@@ -35,5 +35,9 @@ export class UserService {
   getUserPermissions(id) {
     return this.httpClient.get('http://localhost:8000/api/user/getPermissions/'+id);
   }
+
+  getUserNumberOfArticles(id) {
+    return this.httpClient.get('http://localhost:8000/api/user/numberOfArticles/'+id);
+  }
   
 }

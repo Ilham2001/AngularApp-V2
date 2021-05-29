@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Permission } from 'src/app/models/permission';
 import { PermissionService } from 'src/app/services/permission.service';
 import { RoleService } from 'src/app/services/role.service';
@@ -20,7 +22,7 @@ export class AddRoleComponent implements OnInit {
   })
 
   constructor(private fb: FormBuilder, private permissionService:PermissionService, 
-    private roleService:RoleService) { }
+    private roleService:RoleService, private message: NzMessageService, private router:Router) { }
 
   ngOnInit(): void {
     this.getPermissions();
@@ -39,7 +41,8 @@ export class AddRoleComponent implements OnInit {
       this.addRole.get('permissions').setValue(this.checked_permissions); 
       console.log(this.addRole.value);
       this.roleService.storeData(this.addRole.value).subscribe(response => {
-        console.log(response);
+        this.router.navigate(['/administration']);
+        this.createMessage('success');
       })
     }
     else {
@@ -52,7 +55,10 @@ export class AddRoleComponent implements OnInit {
 
   getCheckedPermissions(value: string[]): void {
     this.checked_permissions = value;
-    console.log(this.checked_permissions);
+  }
+
+  createMessage(type: string): void {
+    this.message.create(type, 'Rôle crée');
   }
 
 }

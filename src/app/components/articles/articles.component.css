@@ -10,6 +10,10 @@
     color: #212136;
     word-wrap: break-word;
 }
+
+h3 {
+    font-size: 15px;
+}
 .filter-btn {
     display: flex;
     flex-wrap: wrap;
@@ -42,6 +46,10 @@
 
 .filter-btn .btn a:hover {
     background-color:  #E8E8E8;
+}
+
+ul li {
+    font-size: 12px;
 }
 
 .list {

@@ -1,5 +1,5 @@
 <div class="wiki">
-    <div class="operations">
+    <div class="operations" *ngIf="hasAddWiki">
         <a [routerLink]="'/add_wiki/'+project?.id"><i nz-icon nzType="plus" nzTheme="outline"></i>Nouvelle page wiki</a>
     </div><br><br><br>
     <nz-list nzItemLayout="horizontal" *ngFor="let wiki of project?.wikis">
@@ -8,7 +8,9 @@
                 <nz-list-item-meta-title>
                     <h1>
                         {{ wiki?.title }} 
-                        
+                        <div class="icon">
+                            <a [routerLink]="'/edit_wiki/'+project.id+'/'+wiki.id"><i nz-icon nzType="edit" nzTheme="fill"></i></a>
+                        </div>
                     </h1>
                     <div class="description" [style.height.%]="height">
                         <p [innerHTML] ="wiki?.content">

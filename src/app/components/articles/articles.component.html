@@ -4,7 +4,8 @@
             <h3>Sommaire de la base de connaissance</h3>
             <ul>
                 <li>Nombre total des catégories : {{ categories?.length }}</li>
-                <li>Nombre total des articles : {{ articles?.length }}</li>
+                <li>Nombre total des articles : {{ project?.articles_length }}</li>
+                <li>Articles écrits par moi : {{ userArticlesLength }}</li>
             </ul>
         </div>
         <div class="filter-btn">
@@ -19,13 +20,13 @@
                     </nz-form-control>
                 </nz-form-item>
             </div>
-            <div class="btn">
+            <div class="btn" *ngIf="hasAddArticle || hasAddCategory">
                 <a [routerLink]="'/add_article/'+project?.id"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
                  <a [routerLink]="'/add_category/'+project?.id"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer une catégorie</a>
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
     
     <div nz-row>
         <div nz-col nzSpan="12">
@@ -42,7 +43,10 @@
                 
                             <nz-list-item-meta-description class="description">
                                 <p>
-                                    {{ article.description | slice:0:60 }}...
+                                    {{ article.description | slice:0:80 }}... |
+                                </p>
+                                <p>
+                                    {{ article.summary |slice:0:80}}...
                                 </p>
                                 <p>
                                     Mis à jour le : {{ article.updated_at| date:'dd/MM/yyyy HH:MM:SS' }}

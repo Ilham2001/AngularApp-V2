@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="hasConsultStatistics">
     <div class="title">
         <h3>Tableau de bord</h3>
     </div>
@@ -15,7 +15,7 @@
                 </thead>
                 <tbody *ngFor="let user of users">
                     <tr>
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td><b>{{ user.first_name }} {{ user.last_name }}</b></td>
                         <td>{{ user.wikis_length }}</td>
                         <td>{{ user.articles_length }}</td>
                         <td>{{ user.projects_length }}</td>
@@ -33,24 +33,28 @@
                 </thead>
                 <tbody *ngFor="let action of actions">
                     <tr>
-                        <td>{{ action?.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}</td>
+                        <td>
+                            {{ action?.created_at | date:'medium' }}
+                        </td>
+
+
                         <td *ngIf="action?.type === 'CA'">
-                                {{ action.user }} a crée un article 
+                                <b>{{ action.user }}</b> a crée l'article <b>{{ action.article }}</b>
                         </td>
                         <td *ngIf="action?.type == 'CP'"> 
-                                {{ action.user }} a crée un projet
+                            <b>{{ action.user }}</b> a crée le projet <b>{{ action.project }}</b>
                         </td>
                             
                         <td *ngIf="action?.type === 'UA'"> 
-                            {{ action.user }} a mis à jour l'article 
+                            <b>{{ action.user }}</b> a mis à jour l'article <b>{{ action.article }}</b>
                         </td>
                         
                         <td *ngIf="action?.type === 'CW'"> 
-                            {{ action.user }} a crée une page wiki 
+                            <b>{{ action.user }}</b> a crée la page wiki <b>{{ action.wiki }}</b>
                         </td>
                             
                         <td *ngIf="action?.type === 'UW'"> 
-                            {{ action.user }} a mis à jour une page wiki 
+                            <b>{{ action.user }}</b> a mis à jour la page wiki <b>{{ action.wiki }}</b>
                         </td>
 
                     </tr>

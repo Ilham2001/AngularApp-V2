@@ -12,7 +12,7 @@
               <app-wiki [project]="project"></app-wiki>
             </nz-tab>
 
-            <nz-tab nzTitle="Configuration">
+            <nz-tab nzTitle="Configuration" *ngIf="hasConfig">
               <app-configuration [project]="project"></app-configuration>
             </nz-tab>
 

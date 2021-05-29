@@ -13,12 +13,15 @@ export class ProjectsComponent implements OnInit {
 
   projects:any;
   permissions:any;
+  hasAddProject:boolean;
+  hasConsultProjects:boolean;
+  userPermissions:any;
 
   constructor(private projectService:ProjectService, private router:Router, private accessService:AccessModeService) { }
 
   ngOnInit(): void {
     this.getProjectsData();
-    //this.getPermissions();
+    this.hasAddProjectPermission();
   }
 
   getProjectsData() {
@@ -31,11 +34,15 @@ export class ProjectsComponent implements OnInit {
     this.router.navigate(['/show_project', project.id]);
   }
 
-  getPermissions() {
-    this.permissions = this.accessService.getUserPermissions();
-    console.log(this.permissions);
-    //debounce._some(this.permissions)
-    
+  hasAddProjectPermission() {
+    this.accessService.getUserPermissions().subscribe(
+      response => {
+        this.userPermissions = response;
+        this.hasAddProject = this.userPermissions.some(function(p)
+          { return p.permission_code === 'CRP'});
+      }
+    )
+
   }
 
 }

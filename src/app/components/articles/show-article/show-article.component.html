@@ -5,9 +5,9 @@
       Catégorie : {{ category?.title }}
     </div>
     <div class="actions">
-      <a [routerLink]="'/add_article'"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
-      <a [routerLink]="'/edit_article/'+article?.id"><i nz-icon nzType="edit" nzTheme="outline"></i>Editer</a>
-      <a (click)="deleteArticle()"><i nz-icon nzType="delete" nzTheme="outline"></i>Supprimer</a>
+      <a [routerLink]="'/add_article'" *ngIf="hasAddArticle"><i nz-icon nzType="plus" nzTheme="outline"></i>Créer un article</a>
+      <a [routerLink]="'/edit_article/'+article?.id" *ngIf="hasUpdateArticle"><i nz-icon nzType="edit" nzTheme="outline"></i>Editer</a>
+      <a (click)="deleteArticle()" *ngIf="hasDeleteArticle"><i nz-icon nzType="delete" nzTheme="outline"></i>Supprimer</a>
     </div>
   </div>
   <div class="description">

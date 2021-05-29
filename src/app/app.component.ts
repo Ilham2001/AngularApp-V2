@@ -16,10 +16,11 @@ import { SearchService } from './services/search.service';
 export class AppComponent {
 
   loggedIn: boolean;
-
+  hasAdministration:boolean;
+  userPermissions:any
   isCollapsed = false;
   submitted = false;
-
+  message:string;
   search = new FormControl('');
 
   data: any;
@@ -33,7 +34,8 @@ export class AppComponent {
   })
 
   constructor(private userService: UserService, private formBuilder: FormBuilder,
-    private router: Router, private appService: AppService, private searchService: SearchService) { }
+    private router: Router, private appService: AppService, private searchService: SearchService,
+    private accessService:AccessModeService) { }
 
   loginForm() {
     this.login_form = this.formBuilder.group({
@@ -51,54 +53,55 @@ export class AppComponent {
       console.log("logged in");
       this.token = localStorage.getItem('token');
       this.userData = jwt_decode(this.token);
-      //console.log(this.userData);
       this.getAuthenticatedUser();
+      this.hasAdministrationPermission();
     }
     else {
       this.loggedIn = false;
       console.log("not logged in");
-      //window.location.reload();
-      this.token = localStorage.getItem('token');
-      //console.log(this.token);
-
     }
   }
 
   onSubmit() {
-    console.log(this.search.value);
     this.searchService.searchResult(this.search.value).subscribe(
       response => {
-        this.router.navigate(['search_result']);
         this.searchService.sendUpdate(response);
+        this.router.navigate(['search_result']);
       }
     )
   }
 
-  get f() {
-    return this.login_form.controls;
-  }
-
   onSubmitLogin() {
     this.submitted = true;
-    if (this.login_form.invalid) {
-      return;
+    if (this.login_form.valid) {
+      this.userService.login(this.login_form.value).subscribe(response => {
+        this.data = response;
+        if (this.data.status === 1) {
+          //console.log(response);
+          this.token = this.data.data.token;
+          localStorage.setItem('token', this.token);
+          this.loggedIn = true;
+          this.router.navigate(['home'])
+            .then(() => {
+              window.location.reload(); //Navigate and refresh page
+            });
+        }
+        else {
+          this.message = "Adresse email ou mot de passe incorrect";
+          for (const i in this.login_form.controls) {
+            this.login_form.controls[i].markAsDirty();
+            this.login_form.controls[i].updateValueAndValidity();
+          }
+        }
+      })
+      
     }
-    this.userService.login(this.login_form.value).subscribe(response => {
-      this.data = response;
-      if (this.data.status === 1) {
-        //console.log(response);
-        this.token = this.data.data.token;
-        localStorage.setItem('token', this.token);
-        this.loggedIn = true;
-        this.router.navigate(['home'])
-          .then(() => {
-            window.location.reload(); //Navigate and refresh page
-          });
+    else {
+      for (const i in this.login_form.controls) {
+        this.login_form.controls[i].markAsDirty();
+        this.login_form.controls[i].updateValueAndValidity();
       }
-      else {
-        console.log("Echec, veuillez réssayer");
-      }
-    })
+    }
   }
 
   logout() {
@@ -120,6 +123,16 @@ export class AppComponent {
         /* Store the id of the authenticated user in the service  */
         this.appService.setAuthenticatedUser(this.authenticatedUser.id);
 
+      }
+    )
+  }
+
+  hasAdministrationPermission() {
+    this.accessService.getUserPermissions().subscribe(
+      response => {
+        this.userPermissions = response;
+        this.hasAdministration = this.userPermissions.some(function(p)
+          { return p.permission_code === 'ADM'});
       }
     )
   }

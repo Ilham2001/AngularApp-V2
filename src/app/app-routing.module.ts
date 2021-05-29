@@ -52,6 +52,7 @@ const routes: Routes = [
   { path: 'add_wiki/:id', component: AddWikiComponent, canActivate: [AuthGuard]  },
   /* My Account */
   { path: 'my_account', component: MyAccountComponent, canActivate: [AuthGuard]  }
+
 ];
 
 @NgModule({
