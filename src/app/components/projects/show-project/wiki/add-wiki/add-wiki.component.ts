@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Wiki } from 'src/app/models/wiki';
 import { AppService } from 'src/app/services/app.service';
 import { DocumentService } from 'src/app/services/document.service';
 import { WikiService } from 'src/app/services/wiki.service';
+import {Location} from '@angular/common';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-add-wiki',
@@ -26,8 +28,9 @@ export class AddWikiComponent implements OnInit {
   });
 
 
-  constructor(private route: ActivatedRoute, private wikiService: WikiService,
-    private fb: FormBuilder, private documentService: DocumentService, private appService: AppService) { }
+  constructor(private route: ActivatedRoute, private wikiService: WikiService, private _location: Location,
+    private fb: FormBuilder, private documentService: DocumentService, private appService: AppService,
+    private message: NzMessageService) { }
 
   ngOnInit(): void {
     this.project_id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -52,10 +55,14 @@ export class AddWikiComponent implements OnInit {
 
     this.wikiService.storeData(formData).subscribe(
       response => {
-        console.log(response);
+        this._location.back();
+        this.createMessage('success');
       }
     )
+  }
 
+  createMessage(type: string): void {
+    this.message.create(type, 'Wiki créée');
   }
 
 

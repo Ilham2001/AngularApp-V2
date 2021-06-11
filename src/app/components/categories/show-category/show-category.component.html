@@ -42,8 +42,8 @@
                         <td>{{ article.title}}</td>
                     </a>
                     <td>{{ article.author }}</td>
-                    <td>{{ article.created_at | date:'dd/MM/yyyy HH:MM:SS' }}</td>
-                    <td>{{ article.updated_at | date:'dd/MM/yyyy HH:MM:SS' }}</td>
+                    <td>{{ article.created_at | date:'medium' }}</td>
+                    <td>{{ article.updated_at | date:'medium' }}</td>
                 </tr>
             </tbody>
             <tbody *ngIf="category?.articles.length === 0">

@@ -10,5 +10,6 @@ export class Project {
     categories:any;
     wikis: any;
     members:any;
+    articles:any;
     articles_length:number;
 }

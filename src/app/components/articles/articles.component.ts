@@ -49,6 +49,7 @@ export class ArticlesComponent implements OnInit {
   getArticlesData() {
     this.articleService.getData().subscribe(response => {
       this.articles = response;
+      
     })
   }
 

@@ -33,10 +33,6 @@ export class ShowCategoryComponent implements OnInit {
     this.categoryService.getCategory(this.category_id).subscribe(
       response => {
         this.category = response;
-        console.log(this.category);
-        //console.log(this.category.children.length);
-        
-        
       }
     )
   }
@@ -44,7 +40,6 @@ export class ShowCategoryComponent implements OnInit {
   getCategoriesData() {
     this.categoryService.getData().subscribe(response => {
       this.categories= response;
-      //console.log(this.categories);
     });
   }
 

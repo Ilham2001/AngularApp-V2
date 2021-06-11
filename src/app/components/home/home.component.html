@@ -34,19 +34,19 @@
                 <tbody *ngFor="let action of actions">
                     <tr>
                         <td>
-                            {{ action?.created_at | date:'medium' }}
+                            {{ action?.created_at | date:'shortDate' }}
                         </td>
 
 
                         <td *ngIf="action?.type === 'CA'">
-                                <b>{{ action.user }}</b> a crée l'article <b>{{ action.article }}</b>
+                                <b>{{ action.user }}</b> a crée l'article <a [routerLink]="'/show_article/'+action.article_id"><b>{{ action.article }}</b></a>
                         </td>
                         <td *ngIf="action?.type == 'CP'"> 
-                            <b>{{ action.user }}</b> a crée le projet <b>{{ action.project }}</b>
+                            <b>{{ action.user }}</b> a crée le projet <a [routerLink]="'/show_project/'+action.project_id"><b>{{ action.project }}</b></a>
                         </td>
                             
                         <td *ngIf="action?.type === 'UA'"> 
-                            <b>{{ action.user }}</b> a mis à jour l'article <b>{{ action.article }}</b>
+                            <b>{{ action.user }}</b> a mis à jour l'article <a [routerLink]="'/show_article/'+action.article_id"><b>{{ action.article }}</b></a>
                         </td>
                         
                         <td *ngIf="action?.type === 'CW'"> 
